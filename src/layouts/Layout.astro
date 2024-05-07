@@ -22,23 +22,52 @@ const { title } = Astro.props;
 	<body>
 		<TopHeader />
 		<Header />
-		<main class="main-page-content">
+		<main style="background-color: var(--light-bg);" class="main-page-content">
 			<slot />
 		</main>
 		<Footer />
 	</body>
 </html>
 <style>
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--primary-color: #2ecc71;
+		--accent-color: #CC2E89;
+		--normal-font: 400;
+		--bold-font: 700;
+		--bolder-font: 900;
+		--bottom-margin: 0.5rem;
+		--bottom-margin-2: 1rem;
+		--line-height: 1.7rem;
+		--transition: 0.3s;
+
+		--bg: #fff;
+		--card-bg: #f1f1f1 ;
+		--navbar-bg: #fff;
+		--footer-bg: #F2F2F2;
+		--text-color: #000;
+	}
+
+	[data-theme="light"] {
+		--bg: #fff;
+		--card-bg: #f1f1f1 ;
+		--navbar-bg: #f1f1f1;
+		--footer-bg: #F2F2F2;
+		--text-color: #000;
+	}
+
+	[data-theme="dark"] {
+		--bg: #111827 ;
+		--card-bg: #2A2C38 ;
+		--navbar-bg: #101623;
+		--footer-bg: #292929;
+		--text-color: #fff;
 	}
 
 	.main-page-content {
@@ -49,5 +78,11 @@ const { title } = Astro.props;
 		margin-top: 2.5rem; 
 		padding-left: 2rem;
 		padding-right: 2rem;
+		background-color: #000;
+	}
+
+	body {
+		background-color: var(--bg);
+		color: var(--text-color);
 	}
 </style>

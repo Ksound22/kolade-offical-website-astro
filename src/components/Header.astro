@@ -1,10 +1,167 @@
 ---
+import { FaBars } from 'react-icons/fa';
+import { FaX } from 'react-icons/fa6';
 
+import Theme from './Theme.astro';
 ---
-<div>
-<p>Header</p>
-</div>
+
+<nav>
+  <a href="/">
+    <p class="name">
+      <span class="first">Kolade</span>
+      <span class="second">Chris</span> 
+    </p>
+  </a>
+ 
+  <ul class="navigation">
+    <li class="navigation-item"><a href="/about" class="nav-link">About</a></li>
+    <li class="navigation-item"><a href="/blog" class="nav-link">Blog</a></li>
+    <li class="navigation-item"><a href="/services" class="nav-link">Services</a></li>
+    <li class="navigation-item"><a href="/contact" class="nav-link">Contact</a></li>
+    
+    <Theme />
+  </ul>
+  <button class="burger-menu" id="burger-menu">
+    <span class="bars"> <FaBars /> </span>
+    <span class="x" ><FaX /></span>
+  </button>
+</nav>
+<hr>
 
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
+  ul {
+    list-style-type: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .name {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .first {
+    color: var(--primary-color);
+  }
+
+  .second {
+    color: var(--accent-color)
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3.5rem;
+    /* background-color: #fcfcfc; */
+    /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); */
+  }
+
+  nav h1 {
+    color: var();
+  }
+
+  nav a {
+    color: unset;
+    transition: 0.3s;
+  }
+  
+  nav ul {
+    display: flex;
+    gap: 2.9rem;
+  }
+  
+  nav ul li {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  nav ul li a:hover {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .burger-menu {
+    color: var(--text-color);
+    font-size: 2rem;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    display: none;
+  }
+
+  .burger-menu .x {
+    display: none;
+  }
+
+  .burger-menu.open .bars {
+    display: none;
+  }
+
+  .burger-menu.open .x {
+    display: block;
+  }
+
+  @media screen and (max-width: 720px) {
+    nav {
+      padding: 1.5rem 1rem;
+    }
+
+    nav ul {
+      position: fixed;
+      background-color: var(--navbar-bg);
+      flex-direction: column;
+      top: 8.9rem;
+      right: 0;
+      width: 50%;
+      transform: translateX(120%);
+      transition: transform 0.5s ease-in;
+      gap: 1.2rem;
+      padding: 1rem 1.2rem;
+    }
+
+    nav ul li {
+      margin: 8px;
+    }
+
+    .burger-menu {
+      display: block;
+    }
+
+    nav ul.show {
+      transform: translateX(0);
+    }
+
+  }
+
+  @media screen and (max-width: 420px) {
+  /*  */
+  }
 </style>
+
+<script>
+  const burger = document.querySelector("#burger-menu");
+  const ul = document.querySelector("nav ul");
+  const navLink = document.querySelectorAll(".nav-link");
+
+  burger.addEventListener("click", () => {
+    ul.classList.toggle("show");
+    burger.classList.toggle("open");
+  });
+
+  navLink.forEach((link) => link.addEventListener("click", () => {
+    ul.classList.remove("show");
+    burger.classList.remove("open");
+  }));
+</script>
