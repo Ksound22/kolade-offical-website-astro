@@ -3,6 +3,8 @@ import { FaBars } from 'react-icons/fa';
 import { FaX } from 'react-icons/fa6';
 
 import Theme from './Theme.astro';
+const pathname = new URL(Astro.request.url).pathname;
+const currentPathname = pathname.slice(1);
 ---
 
 <nav>
@@ -14,10 +16,18 @@ import Theme from './Theme.astro';
   </a>
  
   <ul class="navigation">
-    <li class="navigation-item"><a href="/about" class="nav-link">About</a></li>
-    <li class="navigation-item"><a href="/blog" class="nav-link">Blog</a></li>
-    <li class="navigation-item"><a href="/services" class="nav-link">Services</a></li>
-    <li class="navigation-item"><a href="/contact" class="nav-link">Contact</a></li>
+    <li class="navigation-item">
+      <a href="/about" class={currentPathname === "about" ? "active" : ""}>About</a>
+    </li>
+    <li class="navigation-item">
+      <a href="/blog"  class={currentPathname === "blog" ? "active" : ""}>Blog</a>
+    </li>
+    <li class="navigation-item">
+      <a href="/services"  class={currentPathname === "services" ? "active" : ""}>Services</a>
+    </li>
+    <li class="navigation-item">
+      <a href="/contact"  class={currentPathname === "contact" ? "active" : ""}>Contact</a>
+    </li>
     
     <Theme />
   </ul>
@@ -113,6 +123,10 @@ import Theme from './Theme.astro';
     display: block;
   }
 
+  .active {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
   @media screen and (max-width: 720px) {
     nav {
       padding: 1.5rem 1rem;
@@ -160,8 +174,8 @@ import Theme from './Theme.astro';
     burger.classList.toggle("open");
   });
 
-  navLink.forEach((link) => link.addEventListener("click", () => {
-    ul.classList.remove("show");
-    burger.classList.remove("open");
-  }));
+  // navLink.forEach((link) => link.addEventListener("click", () => {
+  //   ul.classList.remove("show");
+  //   burger.classList.remove("open");
+  // }));
 </script>
