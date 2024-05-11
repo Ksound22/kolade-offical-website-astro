@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets"
+import pp from '../../public/placeholder.png'
+---
+
+<div class="container">
+  <div class="bio">
+    <h1>Hi there 👋🏽 <br> I'm <span class="name">Kolade Chris</span></h1>
+    
+    <p>I'm a <span class="work">software developer</span> and <span class="work">tech writer</span> with a combined 6+ years experience. I have the hunger to provide value anywhere I get to. I've written over 200 articles on web development, programming, PC Guides, IT, and many more. </p> 
+
+    <p>I currently work at freeCodeCamp as an <span class="work">Instructional Designer</span> and <span class="work">Teacher</span>.</p>
+    
+    <p>You can read my articles on <a href="">freeCodeCamp</a> and my <a href="">blog</a>. You can learn more about what I do on my <a href="">service</a> page.</p>
+  </div>
+
+  <div class="hero-img">
+    <Image
+      src={pp}
+      alt="Kolade Chris"
+      height={0}
+      width={0}
+      sizes="100vw"
+    />
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15rem;
+  }
+
+  .name {
+    color: var(--primary-color);
+  }
+
+  .hero-img img {
+    border: 2px solid yellowgreen;
+  }
+
+  .work {
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+</style>
