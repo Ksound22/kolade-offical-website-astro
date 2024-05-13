@@ -1,9 +1,97 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "../layouts/Layout.astro";
+import techWriting from '../../public/tech-writing.png'
+import techCopyWriting from '../../public/tech-copywriting.png'
+import webdev from '../../public/webdev.png'
 ---
 
 <Layout title="Kolade Chris Services">
-  <div>
-    <h1>Kolade Chris Services</h1>
-  </div>
+  <main>
+    <div class="items-container">
+      <div class="item">
+        <Image
+          src={techWriting}
+          width={310}
+          height={239}
+          alt="Tech writing"
+        />
+    
+        <h2>Technical Writing</h2>
+    
+        <p>
+          I excel in writing reader-friendly how-to guides for technical tools or products, blog posts, and documentation.
+        </p>
+      </div>
+
+      <div class="item">
+        <Image
+          src={techCopyWriting}
+          width={310}
+          height={239}
+          alt="Tech writing"
+        />
+        <h2>Technical Writing</h2>
+        <p>
+          I excel in writing reader-friendly how-to guides for technical tools or products, blog posts, and documentation.
+        </p>
+      </div>
+
+      <div class="item">
+        <Image
+          src={webdev}
+          width={310}
+          height={239}  
+          alt="Tech writing"
+        />
+        <h2>Technical Writing</h2>
+        <p>
+          I excel in writing reader-friendly how-to guides for technical tools or products, blog posts, and documentation.
+        </p>
+      </div>
+    </div>
+
+    <p>
+      If you are interested in any of my services, send me{' '}
+      <a
+        href='https://twitter.com/ksound22'
+        target='blank'
+        rel='noopener noreferrer'
+        aria-label='Twitter'
+      >
+        a DM on Twitter{' '}
+      </a>
+      or fill my <a class='' href='/contact'>contact form</a>.
+    </p>
+  </main>
 </Layout>
+
+<style>
+  .items-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .item {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    text-align: center;
+    border-radius: var(--border-radius);
+  }
+
+  h2 {
+    font-size: var(--h2-font);
+  }
+
+  p {
+    font-size: var(--paragraph-font);
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+  
+</style>
