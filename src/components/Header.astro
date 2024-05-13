@@ -84,7 +84,7 @@ const pathname = Astro.url.pathname;
 
   nav a {
     color: unset;
-    transition: 0.3s;
+    transition: var(--transition);
   }
   
   nav ul {
@@ -139,7 +139,7 @@ const pathname = Astro.url.pathname;
       right: 0;
       width: 50%;
       transform: translateX(120%);
-      transition: transform 0.5s ease-in;
+      transition: transform var(--transition) ease-in;
       gap: 1.2rem;
       padding: 1rem 1.2rem;
     }

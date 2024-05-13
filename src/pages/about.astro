@@ -5,7 +5,7 @@ import pp from '../../public/placeholder.png'
 ---
 
 <Layout title="About Kolade Chris">
-  <main>
+  <div class="container">
     <div class='bio-text'>
       <h1>About me</h1>
       <p>
@@ -39,16 +39,17 @@ import pp from '../../public/placeholder.png'
         sizes="100vw"
       />
     </div>
-  </main>
+  </div>
 </Layout>
 
 <style>
 
-  main {
+  .container {
     display: flex;
     align-items: center;
     gap: 10rem;
   }
+
 	h1 {
 		font-size: var(--h1-font);
 	}
@@ -62,7 +63,7 @@ import pp from '../../public/placeholder.png'
     text-decoration: underline;
   }
 
-  main div p:nth-child(5) {
+  .container div p:nth-child(5) {
     margin-bottom: 2.5rem;
   }
 
@@ -74,7 +75,7 @@ import pp from '../../public/placeholder.png'
     padding: 0.8rem 1.3rem;
     border-radius: var(--border-radius);
     font-size: var(--paragraph-font);
-    transition: 0.3s ease-in;
+    transition: var(--transition) ease-in;
   }
 
   .contact-btn:hover {
