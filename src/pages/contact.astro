@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 
 import Layout from "../layouts/Layout.astro";
-import contactImg from '../../public/contact-img.png'
+import contactImg from '../../public/contact-2.webp'
 ---
 
 <Layout title="Contact Kolade Chris">
@@ -15,9 +15,8 @@ import contactImg from '../../public/contact-img.png'
     <Image 
       src={contactImg}
       alt="Contact Image"
-      width={0}
-      height={0}
-      sizes="100vw"
+      width={512}
+      height={512}
     />
 
     <div class="form-container">
@@ -32,7 +31,7 @@ import contactImg from '../../public/contact-img.png'
           <input type="email" id="email" name="email"  placeholder="Your email" required>
 
           <label for="message">Message</label>
-          <textarea id="message" placeholder="Your message" rows="3" cols="3" name="message" required></textarea>
+          <textarea id="message" placeholder="Your message" rows="7" cols="7" name="message" required></textarea>
 
           <button type="submit">Let's Talk</button>
       </form>
@@ -89,6 +88,8 @@ import contactImg from '../../public/contact-img.png'
     margin-bottom: 2rem;
     border: 2px solid var(--primary-color);
     border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: var(--bold-font);
   }
 
   input, textarea::placeholder {
