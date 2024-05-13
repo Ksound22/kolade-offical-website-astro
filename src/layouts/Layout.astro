@@ -28,8 +28,8 @@ const { title } = Astro.props;
 		<Footer />
 	</body>
 </html>
-<style>
 
+<style>
 	* {
 		margin: 0;
 		padding: 0;
@@ -39,6 +39,8 @@ const { title } = Astro.props;
 	:root {
 		--primary-color: #2ecc71;
 		--accent-color: #CC2E89;
+		--primary-hover: #23bb63;
+		--accent-hover: #bc2d80;
 		--normal-font: 400;
 		--bold-font: 700;
 		--bolder-font: 900;
@@ -46,6 +48,10 @@ const { title } = Astro.props;
 		--bottom-margin-2: 1rem;
 		--line-height: 1.7rem;
 		--transition: 0.3s;
+		--paragraph-font: 1.5rem;
+		--h1-font: 2.5rem;
+		--h2-font: 2rem;
+		--border-radius: 4px;
 
 		--bg: #fff;
 		--card-bg: #f1f1f1 ;
@@ -71,8 +77,9 @@ const { title } = Astro.props;
 		--text-color: #fff;
 	}
 
-	header {
-		/* z-index: 1; */
+	body {
+		background-color: var(--bg);
+		color: var(--text-color);
 	}
 
 	.main-page-content {
@@ -83,11 +90,6 @@ const { title } = Astro.props;
 		margin-top: 2.5rem; 
 		padding-left: 2rem;
 		padding-right: 2rem;
-		background-color: #000;
 	}
 
-	body {
-		background-color: var(--bg);
-		color: var(--text-color);
-	}
 </style>
