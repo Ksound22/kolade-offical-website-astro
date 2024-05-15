@@ -5,7 +5,7 @@ author: 'Kolade Chris'
 coverImage: 'image1.png'
 tags: ['Python']
 category: 'Programming'
-excerpt: 'One conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer.'
+excerpt: "One conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer."
 slug: valueerror-invalid-literal-for-int-with-base-10-in-python-fixed
 ---
 
