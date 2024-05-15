@@ -2,13 +2,39 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import LatestYTVids from '../components/LatestYTVids.astro';
-import LatestArticles from '../components/LatestArticles.astro';
+
+import ArticleCard from "../components/ArticleCard.astro";
+
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
+.sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+
+const latestArticles: CollectionEntry<'articles'>[] = allArticles.slice(0, 3)
 ---
 
 <Layout title="Welcome to Astro.">
 	<div>
 		<Hero />
-		<LatestArticles />
+
+		<h2>Latest Articles</h2>
+
+		<div class="article-cards">
+      {latestArticles.map((article) => (
+        <ArticleCard article={article} />
+      ))}
+    </div>
+
+		<h2>Latest YouTube Vidoes</h2>
 		<!-- <LatestYTVids /> -->
 	</div> 
 </Layout>
+
+<style>
+	.article-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.8rem;
+  }
+</style>

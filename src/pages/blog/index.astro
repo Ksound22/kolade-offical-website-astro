@@ -2,15 +2,11 @@
 import Layout from "../../layouts/Layout.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
 
-import { formatDate } from '../../../utils'
-
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-// const allArticles = await getCollection('articles')
 const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
-
-// console.log(allArticles[0])
+.sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
 ---
 
 <Layout title="Blog Paqge">
