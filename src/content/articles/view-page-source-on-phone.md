@@ -2,7 +2,7 @@
 title: 'How to View the Page Source of a Website on a Phone'
 publishedDate: 2022-12-20
 author: 'Kolade Chris'
-coverImage: 'image1.png'
+coverImage: 'images/blogPostCovers/view-page-source-on-phone.webp'
 tags: ['webdev', 'tech']
 category: 'Web Development'
 excerpt: 'Learn how to view the page source of a website right on your mobile phone'

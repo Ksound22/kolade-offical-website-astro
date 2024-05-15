@@ -2,7 +2,7 @@
 title: 'What is the HTML Role Attribute?'
 publishedDate: 2022-12-23
 author: 'Kolade Chris'
-coverImage: 'image1.png'
+coverImage: 'images/blogPostCovers/html-role-attribute.webp'
 tags: ['HTML', 'WebDev']
 category: 'Frontend Development'
 excerpt: 'The role attribute is an important aspect of accessibility. Reading more about it in this article.'

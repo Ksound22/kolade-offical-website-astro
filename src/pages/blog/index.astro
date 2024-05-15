@@ -1,0 +1,140 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from '../../../utils'
+
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+// const allArticles = await getCollection('articles')
+const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
+
+// console.log(allArticles[0])
+---
+
+<Layout title="Blog Paqge">
+  <section>
+    <h1>All Articles</h1>
+
+    <div class="article-cards">
+      {allArticles.map((article) => (
+        <div class="article-card">
+          <a href={`/blog/${article.data.slug}`} class="article-link">
+            <img
+              src={article.data.coverImage}
+              alt={article.data.title}
+              class="article-image"
+            />
+          </a>
+          <div class="article-card-content">
+            <h3 class="article-title">
+              <a href={`/blog/${article.data.slug}`} class="article-title-link">
+                {article.data.title}
+              </a>
+            </h3>
+            <div class="tags-and-date">
+              <div class="tags">
+                {article.data.tags.map((tag:string, index:number) => (
+                  <span class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}>
+                    <a href={`/blog/tag/${tag}`} class="tag">
+                      #{tag}
+                    </a>
+                  </span>
+                ))}
+              </div>
+              <div class="date">
+                <p>{formatDate(article.data.publishedDate)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+  </section>
+</Layout>
+
+<style>
+  .article-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.8rem;
+  }
+
+  .article-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: 30%;
+    transition: transform 0.3s;
+  }
+
+  .article-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .article-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .article-image {
+    width: 100%;
+  }
+
+  .article-card-content {
+    padding: 20px;
+  }
+
+  .article-title {
+    font-size: 1.25em;
+    margin: 0 0 10px;
+  }
+
+  .article-title-link {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  .tags-and-date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tags {
+    display: flex;
+    gap: 10px;
+  }
+
+  .tag {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.875em;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  .even-tag {
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+  }
+
+  .even-tag:hover {
+    background-color: var(--accent-hover);
+  }
+
+  .odd-tag {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+  }
+
+  .odd-tag:hover {
+    background-color: var(--primary-hover);
+  }
+
+  .date p {
+    margin: 0;
+    color: var(--text-color);
+  }
+</style>
