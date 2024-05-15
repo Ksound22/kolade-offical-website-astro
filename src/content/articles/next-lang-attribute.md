@@ -1,3 +1,14 @@
+---
+title: 'How to Add the lang Attribute to the Root of your Next JS Website without _document.js'
+publishedDate: 2022-12-21
+author: 'Kolade Chris'
+coverImage: 'image1.png'
+tags: ['Next JS', 'WebDev']
+category: 'Frontend Development'
+excerpt: 'Add the lang attribute to the root of your Next JS website without creating a _document.js file'
+slug: how-to-add-the-lang-attribute-to-the-root-of-your-next-js-website-without-documentjs
+---
+
 The `lang` attribute is not available by default in Next JS. And unfortunately, it's not a good thing for accessibility not to have the `lang` attribute in the root element of your Next JS app.
 
 And if you want to write less code as possible like me, then creating a whole file in `_document.js` to add the `lang` attribute to the root HTML element of your Next JS app might be an overkill.

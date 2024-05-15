@@ -1,3 +1,14 @@
+---
+title: 'ValueError: invalid literal for int() with base 10: in Python [Fixed]'
+publishedDate: 2022-12-26
+author: 'Kolade Chris'
+coverImage: 'image1.png'
+tags: ['Python']
+category: 'Programming'
+excerpt: 'One conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer.'
+slug: valueerror-invalid-literal-for-int-with-base-10-in-python-fixed
+---
+
 In Python, you can convert one data type to another. For instance, integers to strings and vice versa, floats to strings, and many others.
 
 However, one conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer. For example, converting "5.20" to an integer. This results in the **ValueError: invalid literal for int() with base 10:** error.
