@@ -1,7 +1,25 @@
 ---
+import ArticleCard from "./ArticleCard.astro"
 
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
+.sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+
+const latestArticles: CollectionEntry<'articles'>[] = allArticles.slice(0, 3)
 ---
 
-<div>
-  <h2>Latest Articles</h2>
+<div class="article-cards">
+  {latestArticles.map((article) => (
+    <ArticleCard article={article} />
+  ))}
 </div>
+
+<style>
+	.article-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.8rem;
+  }
+</style>
