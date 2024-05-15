@@ -3,7 +3,7 @@ title: '5 Awesome CSS Generators for your Web Projects in 2024'
 publishedDate: 2024-03-28
 author: 'Kolade Chris'
 coverImage: 'image1.png'
-tags: ['CSS' 'WebTools']
+tags: ['CSS', 'WebTools']
 category: 'Frontend Development'
 excerpt: 'CSS generators are tools available online that you can use to add design effects such as shadows, waves, buttons, shadings, overlays, and several other designs to your websites.'
 slug: 5-awesome-css-generators-for-your-web-projects-in-2024

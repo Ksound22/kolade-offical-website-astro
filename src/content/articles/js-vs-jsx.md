@@ -1,11 +1,11 @@
 ---
-title: What is the Difference between a .js and .jsx File in React?
+title: 'What is the Difference between a .js and .jsx File in React?'
 publishedDate: 2022-12-24
 author: 'Kolade Chris'
 coverImage: 'image1.png'
 tags: ['React', 'JSX', 'WebDev']
 category: 'Frontend Development'
-excerpt: 'A JavaScript and JSX file are not exactly the same thing. There's one notable difference between them you can learn of in this article.'
+excerpt: "A JavaScript and JSX file are not exactly the same thing. There's one notable difference between them you can learn of in this article."
 slug: what-is-the-difference-between-a-js-and-jsx-file-in-react
 ---
 
