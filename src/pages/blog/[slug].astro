@@ -1,8 +1,10 @@
 ---
-import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { formatDate } from "../../../utils";
+
+import Layout from "../../layouts/Layout.astro";
+import TableOfContentHeadings from "../../components/TableOfContentHeadings.astro";
+import { formatDate, buildTOC } from "../../../utils";
 
 export async function getStaticPaths () {
   const allArticles: CollectionEntry<'articles'>[] = await getCollection('articles')
@@ -17,7 +19,9 @@ export async function getStaticPaths () {
 }
 
 const { entry } = Astro.props
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
+
+const toc = buildTOC(headings)
 ---
 
 <Layout title={entry.data.title}>
@@ -30,7 +34,7 @@ const { Content } = await entry.render();
   </div>
   
   <div class="single-article-container">
-    <article class="article-details">
+    <div class="article-details">
       <h1>{entry.data.title}</h1>
       <p class="stats">Written by {entry.data.author} | { formatDate(entry.data.publishedDate)} | {entry.data.readingTime} Read</p>
       <div class="tags">
@@ -50,18 +54,25 @@ const { Content } = await entry.render();
         height="500"
       />
 
-      <Content  />
-    </article>
+      <article>
+        <Content  />
+      </article>
+    </div>
 
     <aside class="toc-and-related">
       <h2>Table of Content</h2>
+
+      <nav class="toc">
+        <ul>
+          {toc.map((heading) => <TableOfContentHeadings heading={heading} />)}
+        </ul>
+      </nav>
     </aside>
 
   </div>
 </Layout>
 
 <style>
-
   .single-article-container {
     display: flex;
     gap: 2.5rem;
@@ -163,4 +174,32 @@ const { Content } = await entry.render();
   .odd-tag:hover {
     background-color: var(--primary-hover);
   }
+
+  .toc-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--primary-color);
+  }
 </style>
+
+<script>
+  const headingElements = document.querySelectorAll('h2[id], h3[id], h4[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  function handleScroll() {
+    const scrollPosition = window.scrollY + (window.innerHeight / 2);
+
+    headingElements.forEach((heading, index) => {
+      const headingTop = heading.getBoundingClientRect().top + window.scrollY;
+      const isActive = scrollPosition >= headingTop;
+
+      if (isActive) {
+        tocLinks.forEach((link) => link.classList.remove('active'));
+        tocLinks[index].classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+</script>
