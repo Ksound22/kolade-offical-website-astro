@@ -1,0 +1,166 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../../../utils";
+
+export async function getStaticPaths () {
+  const allArticles: CollectionEntry<'articles'>[] = await getCollection('articles')
+
+  return allArticles.map(entry => ({
+    params: {
+      slug: entry.slug
+    },
+
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <a href='/blog' role="button" class="back">Back to Blog Page</a>
+  
+  <div class="category-container">
+    <a href={`/blog/categeory/${entry.data.category}`} class="category" role="button">
+      {entry.data.category}
+    </a>
+  </div>
+  
+  <div class="single-article-container">
+    <article class="article-details">
+      <h1>{entry.data.title}</h1>
+      <p class="stats">Written by {entry.data.author} | { formatDate(entry.data.publishedDate)} | {entry.data.readingTime} Read</p>
+      <div class="tags">
+        {entry.data.tags.map((tag:string, index:number) => (
+          <span class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}>
+            <a href={`/blog/tag/${tag}`} class="tag">
+              #{tag}
+            </a>
+          </span>
+        ))}
+      </div>
+
+      <img
+        src={entry.data.coverImage}
+        alt={entry.data.title}
+        width="800"
+        height="500"
+      />
+
+      <Content  />
+    </article>
+
+    <aside class="toc-and-related">
+      <h2>Table of Content</h2>
+    </aside>
+
+  </div>
+</Layout>
+
+<style>
+
+  .single-article-container {
+    display: flex;
+    gap: 2.5rem;
+    height: auto;
+  }
+
+  .article-details {
+    flex: 1;
+    max-width: 70%;
+  }
+
+  .toc-and-related {
+    max-width: 30%;
+    max-height: 100vh;
+    position: sticky;
+    top: 30px; 
+    overflow-y: auto;
+    flex: 1; 
+    padding: 20px;
+  }
+
+  .toc-and-related h2 {
+   
+  }
+
+  h1 {
+    font-size: var(--h1-font);
+  }
+
+  .back {
+    color: var(--primary-color);
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .category {
+    color: var(--text-color);
+    text-decoration: none;
+    background: var(--back-bg);
+    padding: 1rem;
+    font-size: var(--paragraph-font);
+  }
+
+  .stats {
+    margin-top: -1rem;
+  }
+</style>
+
+<style is:global>
+
+ h2 {
+  font-size: var(--h2-font);
+  margin-top: 3.5rem;
+  margin-bottom: 0
+ }
+
+ pre {
+  padding: 1rem;
+ }
+
+ p {
+  font-size: var(--paragraph-font);
+ }
+
+ img {
+  border-radius: var(--border-radius);
+ }
+
+ .tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.875em;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  .even-tag {
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+  }
+
+  .even-tag:hover {
+    background-color: var(--accent-hover);
+  }
+
+  .odd-tag {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+  }
+
+  .odd-tag:hover {
+    background-color: var(--primary-hover);
+  }
+</style>

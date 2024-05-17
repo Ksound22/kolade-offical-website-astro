@@ -4,13 +4,6 @@ import Hero from '../components/Hero.astro';
 import LatestYTVids from '../components/LatestYTVids.astro';
 import LatestArticles from '../components/LatestArticles.astro';
 
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-
-const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
-.sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
-
-const latestArticles: CollectionEntry<'articles'>[] = allArticles.slice(0, 3)
 ---
 
 <Layout title="Welcome to Astro.">

@@ -3,7 +3,6 @@ import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
 
 import notFoundImage from  '../../public/images/404.png'
-import LatestArticles from "../components/LatestArticles.astro"
 ---
 
 <Layout title="Not Found">
@@ -21,14 +20,9 @@ import LatestArticles from "../components/LatestArticles.astro"
     <a class='back-home-btn' role="button" href='/'>Go Back Home</a>
   </div>
 
-  <h2>In the meantime, you can read my latest articles.</h2>
-  <LatestArticles />
 </Layout>
 
 <style>
-  h2 {
-		font-size: var(--h2-font);
-	}
 
   .notfound-img {
     display: block;

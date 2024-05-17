@@ -2,7 +2,7 @@
 title: 'ValueError: invalid literal for int() with base 10: in Python [Fixed]'
 publishedDate: 2022-12-26
 author: 'Kolade Chris'
-coverImage: 'images/blogPostCovers/python-valueerror.webp'
+coverImage: '/images/blogPostCovers/python-valueerror.webp'
 tags: ['Python']
 category: 'Programming'
 excerpt: "One conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer."

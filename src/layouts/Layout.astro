@@ -16,6 +16,7 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -63,6 +64,7 @@ const { title } = Astro.props;
 
 	[data-theme="light"] {
 		--bg: #fff;
+		--back-bg: #f6f6f6;
 		--card-bg: #fafafa ;
 		--navbar-bg: #f1f1f1;
 		--footer-bg: #F2F2F2;
@@ -73,6 +75,7 @@ const { title } = Astro.props;
 
 	[data-theme="dark"] {
 		--bg: #111827;
+		--back-bg: #000;
 		/* --card-bg: #2a2c38 ; */
 		--card-bg: #141a2a;
 		--navbar-bg: #101623;
