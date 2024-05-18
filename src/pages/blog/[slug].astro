@@ -1,13 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+// import { getCollection } from "astro:content";
+// import type { CollectionEntry } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
 import TableOfContentHeadings from "../../components/TableOfContentHeadings.astro";
-import { formatDate, buildTOC } from "../../../utils";
+import { formatDate, buildTOC, fetchAllArticles } from "../../../utils";
+import ReatedArticles from "../../components/ReatedArticles.astro";
 
 export async function getStaticPaths () {
-  const allArticles: CollectionEntry<'articles'>[] = await getCollection('articles')
+  // const allArticles: CollectionEntry<'articles'>[] = await getCollection('articles')
+
+  const allArticles = await fetchAllArticles()
 
   return allArticles.map(entry => ({
     params: {
@@ -22,6 +25,20 @@ const { entry } = Astro.props
 const { Content, headings } = await entry.render();
 
 const toc = buildTOC(headings)
+
+// GEt related articles
+// Extract the category from the current post
+const currentPostCategory = entry.data.category;
+
+// Extract the slug from the current post
+const currentPostSlug = entry.slug;
+
+const allArticles = await fetchAllArticles()
+const randomisedArticles = allArticles.sort(() => Math.random() - Math.random())
+
+const relatedArticles = randomisedArticles.filter(article => {
+  return article.data.category === currentPostCategory && article.slug !== currentPostSlug
+}).slice(0, 3);
 ---
 
 <Layout title={entry.data.title}>
@@ -54,9 +71,10 @@ const toc = buildTOC(headings)
         height="500"
       />
 
-      <article>
-        <Content  />
-      </article>
+        <article >
+          <Content  />
+        </article>
+
     </div>
 
     <aside class="toc-and-related">
@@ -67,6 +85,23 @@ const toc = buildTOC(headings)
           {toc.map((heading) => <TableOfContentHeadings heading={heading} />)}
         </ul>
       </nav>
+
+      <div>
+        <h2>Related Posts</h2>
+        <!-- {relatedArticles.map((related) => (
+          <h3>
+            <a href={`/blog/${related.data.slug}`}>{related.data.title}</a>
+          </h3>
+          <small>
+            <span>
+              <time>{formatDate(related.data.publishedDate)}</time>
+              <span>{related.data.readingTime} Read</span>
+            </span>
+          </small>
+        ))} -->
+
+        <ReatedArticles relatedArticle={relatedArticles} />
+      </div>
     </aside>
 
   </div>
@@ -132,6 +167,10 @@ const toc = buildTOC(headings)
   font-size: var(--h2-font);
   margin-top: 3.5rem;
   margin-bottom: 0
+ }
+
+ ul {
+  font-size: var(--paragraph-font);
  }
 
  pre {

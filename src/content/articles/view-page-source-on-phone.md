@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: 'images/blogPostCovers/view-page-source-on-phone.webp'
 tags: ['webdev', 'tech']
 category: 'Web Development'
+readingTime: '2 minutes'
 excerpt: 'Learn how to view the page source of a website right on your mobile phone'
 slug: how-to-view-the-page-source-of-a-website-on-a-phone
 ---

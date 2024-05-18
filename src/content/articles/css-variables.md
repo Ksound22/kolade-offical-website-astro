@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/css-variables.webp'
 tags: ['CSS']
 category: 'Frontend Development'
+readingTime: '3 minutes'
 excerpt: 'Yes. You can declare and reuse variables in CSS by reading this article.'
 slug: how-to-create-and-use-css-variables
 ---

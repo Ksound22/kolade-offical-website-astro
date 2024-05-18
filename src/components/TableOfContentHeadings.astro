@@ -9,7 +9,7 @@ const { heading } = Astro.props;
   {
     heading.subheadings.length > 0 && (
       <ul class="toc-sublist">
-        {heading.subheadings.map((subheading) => (
+        {heading.subheadings.map((subheading:any) => (
           <Astro.self heading={subheading} />
         ))}
       </ul>

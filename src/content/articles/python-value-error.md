@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/python-valueerror.webp'
 tags: ['Python']
 category: 'Programming'
+readingTime: '2 minutes'
 excerpt: "One conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer."
 slug: valueerror-invalid-literal-for-int-with-base-10-in-python-fixed
 ---

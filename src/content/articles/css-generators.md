@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/css-generators.webp'
 tags: ['CSS', 'WebTools']
 category: 'Frontend Development'
+readingTime: '1 minute'
 excerpt: 'CSS generators are tools available online that you can use to add design effects such as shadows, waves, buttons, shadings, overlays, and several other designs to your websites.'
 slug: 5-awesome-css-generators-for-your-web-projects-in-2024
 ---

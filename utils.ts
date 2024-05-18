@@ -1,3 +1,6 @@
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
 function formatDate(date: Date): string {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -24,4 +27,13 @@ function buildTOC(headings: any) {
   return toc;
 }
 
-export { formatDate, buildTOC };
+let allArticles: CollectionEntry<'articles'>[] | null = null;
+
+async function fetchAllArticles(): Promise<CollectionEntry<'articles'>[]> {
+  if (!allArticles) {
+    allArticles = await getCollection('articles');
+  }
+  return allArticles;
+}
+
+export { formatDate, buildTOC, fetchAllArticles };
