@@ -29,7 +29,8 @@ const allArticles = await fetchAllArticles();
 const categoryArticles = allArticles.filter(article => article.data.category.toLowerCase().replace(/\s+/g, "-") === slug);
 ---
 
-<Layout title="Category">
+<Layout title=`${category} Articles`>
+  <h1>{category} Articles</h1>
   <div class="article-cards">
     {categoryArticles.map((article) => (
       <ArticleCard article={article} />
@@ -38,6 +39,12 @@ const categoryArticles = allArticles.filter(article => article.data.category.toL
 </Layout>
 
 <style>
+
+  h1 {
+    font-size: var(--h1-font);
+    margin-bottom: 2.5rem;
+  }
+
   .article-cards {
     display: flex;
     flex-wrap: wrap;
