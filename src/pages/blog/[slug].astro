@@ -57,7 +57,7 @@ const relatedArticles = randomisedArticles.filter(article => {
       <div class="tags">
         {entry.data.tags.map((tag:string, index:number) => (
           <span class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}>
-            <a href={`/blog/tag/${tag}`} class="tag">
+            <a href={`/blog/tag/${tag.toLowerCase()?.replace(/\s+/, "-")}`} class="tag">
               #{tag}
             </a>
           </span>
