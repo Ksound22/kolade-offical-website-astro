@@ -18,13 +18,17 @@ const { heading } = Astro.props;
 </li>
 
 <style>
-   .toc-link {
+  
+  li {
+    list-style-type: none;
+  }
+
+  .toc-link {
     color: var(--text-color);
     text-decoration: none;
-    display: block;
-    padding: 5px 0;
+    display: flex;
+    padding-top: 5px;
     font-size: 1.2rem;
-    text-align: left;
   }
 
   .toc-link:hover {
@@ -35,10 +39,6 @@ const { heading } = Astro.props;
   .toc-sublist {
     list-style-type: none;
     padding-left: 20px;
-  }
-
-  li {
-    list-style-type: none;
   }
 </style>
 

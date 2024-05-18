@@ -88,18 +88,6 @@ const relatedArticles = randomisedArticles.filter(article => {
 
       <div>
         <h2>Related Posts</h2>
-        <!-- {relatedArticles.map((related) => (
-          <h3>
-            <a href={`/blog/${related.data.slug}`}>{related.data.title}</a>
-          </h3>
-          <small>
-            <span>
-              <time>{formatDate(related.data.publishedDate)}</time>
-              <span>{related.data.readingTime} Read</span>
-            </span>
-          </small>
-        ))} -->
-
         <ReatedArticles relatedArticle={relatedArticles} />
       </div>
     </aside>
