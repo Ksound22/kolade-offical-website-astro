@@ -1,0 +1,46 @@
+---
+import { fetchAllArticles } from "../../../../utils";
+import ArticleCard from "../../../components/ArticleCard.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+export async function getStaticPaths () {
+
+  const allArticles = await fetchAllArticles()
+
+  return allArticles.map(entry => ({
+    params: {
+      slug: entry.data.category.toLowerCase().replace(/\s+/g, "-")
+    },
+
+    props: { 
+      category: entry.data.category 
+    }
+  }));
+}
+
+const { slug } = Astro.params;
+const { category } = Astro.props;
+
+if(category === undefined) {
+  throw new Error('Category is required');
+}
+
+const allArticles = await fetchAllArticles();
+const categoryArticles = allArticles.filter(article => article.data.category.toLowerCase().replace(/\s+/g, "-") === slug);
+---
+
+<Layout title="Category">
+  <div class="article-cards">
+    {categoryArticles.map((article) => (
+      <ArticleCard article={article} />
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .article-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.8rem;
+  }
+</style>

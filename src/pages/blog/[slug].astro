@@ -45,7 +45,7 @@ const relatedArticles = randomisedArticles.filter(article => {
   <a href='/blog' role="button" class="back">Back to Blog Page</a>
   
   <div class="category-container">
-    <a href={`/blog/categeory/${entry.data.category}`} class="category" role="button">
+    <a href={`/blog/category/${entry.data.category.toLowerCase().replace(/\s+/, "-")}`} class="category" role="button">
       {entry.data.category}
     </a>
   </div>

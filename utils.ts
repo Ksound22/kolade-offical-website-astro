@@ -36,4 +36,8 @@ async function fetchAllArticles(): Promise<CollectionEntry<'articles'>[]> {
   return allArticles;
 }
 
-export { formatDate, buildTOC, fetchAllArticles };
+function capitalizeFirstLetterOfWords(word: string) {
+  return word.replace(/\b(\w)/g, (char) => char.toUpperCase());
+}
+
+export { formatDate, buildTOC, fetchAllArticles, capitalizeFirstLetterOfWords };
