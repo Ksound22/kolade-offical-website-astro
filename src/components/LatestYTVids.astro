@@ -9,7 +9,7 @@ const { items } = await res.json();
   <div class="videos">
     {items?.map((video: any) => (
       <div class="video-item">
-        <h3 class="vid-title">{video.snippet.title.substring(0, 35)}...</h3>
+        <h3 class="vid-title">{video.snippet.title.substring(0, 33)}...</h3>
         <Image
           src={video.snippet.thumbnails.medium.url}
           width={320}
