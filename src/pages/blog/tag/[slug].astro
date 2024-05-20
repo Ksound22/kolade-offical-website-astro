@@ -28,13 +28,13 @@ if (tag === undefined) {
 
 const allArticles = await fetchAllArticles();
 const tagArticles = allArticles.filter(article => 
-  article.data.tags.some(t => t.toLowerCase().replace(/\s+/g, "-") === slug)
+  article.data.tags.some(tag => tag.toLowerCase().replace(/\s+/g, "-") === slug)
 );
 ---
-
+  
 <Layout title=`Articles Tagged ${tag}`>
 
-  <h1>Articles Tagged #{tag}</h1>
+  <h1>Articles Tagged {tag}</h1>
 
   <div class="article-cards">
     {tagArticles.map((article) => (
