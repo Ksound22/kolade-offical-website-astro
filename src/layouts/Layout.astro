@@ -65,35 +65,52 @@ const { title } = Astro.props;
 		--h2-font: 2rem;
 		--border-radius: 4px;
 
-		--bg: #fff;
+		--bg: #F8F8FF;
 		--card-bg: #f1f1f1 ;
 		--navbar-bg: #f1f1f1;
 		--footer-bg: #F2F2F2;
 		--text-color: #000;
 		--text-color-hover: #0f0f0f;
+		--tag-text-color: #FFF;
 	}
 
 	[data-theme="light"] {
-		--bg: #fff;
-		--back-bg: #f6f6f6;
-		--card-bg: #fafafa ;
-		--navbar-bg: #f1f1f1;
+		--bg: #F8F8FF;
+		--ball-bg: #000;
+		--label-bg: #FFF;
+		--back-bg: #F6F6F6;
+		--card-bg: #FFF;
+		--navbar-bg: #f5f6fa;
 		--footer-bg: #F2F2F2;
 		--text-color: #000;
-		--text-color: #101010;
-		
+		--text-color-hover: #101010;
 	}
 
 	[data-theme="dark"] {
 		--bg: #111827;
+		--ball-bg: #fff;
+		--label-bg: #313638;
 		--back-bg: #000;
-		/* --card-bg: #2a2c38 ; */
 		--card-bg: #141a2a;
 		--navbar-bg: #101623;
 		--footer-bg: #292929;
 		--text-color: #fff;
-		--text-color-hover: #f5f5f5;
+		--text-color-hover: #000;
 	}
+		 /*White alternatives */
+	 /* #F8F8FF
+	 		#F5F5F5
+			#F1FAFF
+			#FBFFF4
+	 */
+
+	 /*Black alternatives */
+	 /* #313638
+	 		#212427
+			#130f40
+			#222f3e
+			#1e272e
+	 */
 
 	body {
 		background-color: var(--bg);
@@ -114,3 +131,5 @@ const { title } = Astro.props;
 
 
 	<!-- https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap -->
+
+	
