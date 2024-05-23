@@ -18,6 +18,10 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 
+		<!-- Pagefind for searching -->
+		<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+		<script src="/pagefind/pagefind-ui.js" is:inline></script>
+
 		<AstroFont config={[{
 			src: [],
 			name: "Roboto",
@@ -131,5 +135,3 @@ const { title } = Astro.props;
 
 
 	<!-- https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap -->
-
-	

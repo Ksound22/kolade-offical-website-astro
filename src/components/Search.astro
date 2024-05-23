@@ -1,0 +1,72 @@
+---
+import { FaSearch } from "react-icons/fa"
+---
+
+<form class="search-bar">
+  <input 
+    type="text" 
+    placeholder="Search articles" 
+    class="search-input"
+  />
+  <button 
+    type="submit" 
+    class="search-button"
+  >
+    <FaSearch />
+  </button>
+</form>
+
+<style>
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    padding: 7.8px;
+    padding-right: 7.5rem;
+    background-color: var(--label-bg);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    font-weight: var(--bold-font);
+
+    position: relative;
+    left: 2px;
+  }
+
+  .search-input::placeholder {
+    font-weight: var(--bold-font);
+  }
+
+  .search-input:focus {
+    border: 2px solid var(--primary-color);
+    outline: none;
+    box-shadow: none;
+  }
+
+  .search-button {
+    padding: 7.5px 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .search-button svg {
+    height: 20px;
+    width: 20px;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    // @ts-ignore
+    new PagefindUI({ element: "#search", showSubResults: true });
+  });
+</script>

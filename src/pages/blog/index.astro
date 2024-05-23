@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
+import Search from '../../components/Search.astro'
 
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -11,7 +12,11 @@ const allArticles: CollectionEntry<'articles'>[] = (await getCollection('article
 
 <Layout title="Blog Paqge">
   <section>
-    <h1>All Articles</h1>
+    <div class="search-and-title">
+      <h1>All Articles</h1>
+      <Search />
+      
+    </div>
 
     <div class="article-cards">
       {allArticles.map((article) => (
@@ -23,6 +28,13 @@ const allArticles: CollectionEntry<'articles'>[] = (await getCollection('article
 </Layout>
 
 <style>
+
+  .search-and-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   h1 {
     font-size: var(--h1-font);
   }
