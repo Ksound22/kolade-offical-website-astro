@@ -5,7 +5,7 @@ const { relatedArticle } = Astro.props;
 ---
 
 <div>
-  {relatedArticle.map((related) => (
+  {relatedArticle.map((related:any) => (
     <h3>
       <a href={`/blog/${related.data.slug}`}>{related.data.title}</a>
     </h3>

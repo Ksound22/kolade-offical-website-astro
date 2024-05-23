@@ -12,11 +12,12 @@ const allArticles: CollectionEntry<'articles'>[] = (await getCollection('article
 
 <Layout title="Blog Paqge">
   <section>
-    <div class="search-and-title">
+
+   
       <h1>All Articles</h1>
       <Search />
       
-    </div>
+   
 
     <div class="article-cards">
       {allArticles.map((article) => (
