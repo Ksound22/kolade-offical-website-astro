@@ -23,3 +23,10 @@ import LatestArticles from '../components/LatestArticles.astro';
 		font-size: var(--h2-font);
 	}
 </style>
+
+<script>
+	const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+console.log(params)
+</script>
