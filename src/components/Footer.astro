@@ -1,8 +1,118 @@
 ---
+import { fetchAllArticles } from "../../utils"
 
+const allArticles = await fetchAllArticles()
+
+const categories = allArticles.flatMap((article) => article.data.category)
+const uniqueCategories = [...new Set(categories)]
+
+const tags = allArticles.flatMap((article) => article.data.tags)
+const uniqueTags = [...new Set(tags)]
+
+const currentYear = new Date().getFullYear()
 ---
-<div>
-  <p>Footer</p>
-</div>
+
+<footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <h2>Follow Me</h2>
+        <a href="https://freecodecamp.org/news/author/kolade" target="_blank">freeCodeCamp</a>
+        <a href="https://github.com/ksound22" target="_blank" >GitHub</a>
+        <a href="https://x.com/ksound22" target="_blank" >X</a>
+        <a href="https://www.linkedin.com/in/kolade-chris-6a0685199" target="_blank" >LinkedIn</a>
+      </div>
+
+      <div class="categories">
+        <h2>Top Categories</h2>
+        {uniqueCategories.map((cat) => <a href={`/blog/category/${cat}`}>{cat}</a> )}
+      </div>
+
+      <div class="tags">
+        <h2>Top Tags</h2>
+        {uniqueTags.map((tag) => <a href={`/blog/tag/${tag}`}>{tag}</a> )}
+      </div>
+        
+      <div class="footer-links">
+        <h2>Quick Links</h2>
+        <a href="/blog">Blog</a>
+        <a href="/about">About Me</a>
+        <a href="/services">My Services</a>
+        <a href="/contact">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy;2022 – {currentYear} Kolade Chris. All rights reserved.</p>
+    </div>
+</footer>
 
 <style>
+  .footer {
+    background-color: var(--navbar-and-footer-bg);
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .first {
+    color: var(--primary-color);
+  }
+
+  .second {
+    color: var(--accent-color)
+  }
+
+  .social-links,
+  .footer-links,
+  .categories,
+  .tags {
+    flex: 1;
+    margin: 20px;
+  }
+
+  .social-links h2,
+  .footer-links h2,
+  .categories h2,
+  .tags h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links a,
+  .footer-links a,
+  .categories a,
+  .tags a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+  }
+
+  .social-links a:hover,
+  .footer-links a:hover,
+  .categories a:hover,
+  .tags a:hover {
+    text-decoration: underline;
+    color: var(--primary-hover);
+  }
+
+  .copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+</style>

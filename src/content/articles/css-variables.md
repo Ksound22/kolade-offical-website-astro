@@ -3,7 +3,7 @@ title: 'The CSS var() Function – How to Create and Use CSS Variables'
 publishedDate: 2022-12-28
 author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/css-variables.webp'
-tags: ['CSS']
+tags: ['CSS', 'WebDev']
 category: 'Frontend Development'
 readingTime: '3 minutes'
 excerpt: 'Yes. You can declare and reuse variables in CSS by reading this article.'
