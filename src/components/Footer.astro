@@ -24,12 +24,12 @@ const currentYear = new Date().getFullYear()
 
       <div class="categories">
         <h2>Top Categories</h2>
-        {uniqueCategories.map((cat) => <a href={`/blog/category/${cat}`}>{cat}</a> )}
+        {uniqueCategories.map((cat) => <a href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, "-")}`}>{cat}</a> )}
       </div>
 
       <div class="tags">
         <h2>Top Tags</h2>
-        {uniqueTags.map((tag) => <a href={`/blog/tag/${tag}`}>{tag}</a> )}
+        {uniqueTags.map((tag) => <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}>{tag}</a> )}
       </div>
         
       <div class="footer-links">
