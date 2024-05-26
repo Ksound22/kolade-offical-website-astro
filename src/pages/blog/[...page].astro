@@ -1,0 +1,56 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Pagination from "../../components/Pagination.astro";
+
+import type { Page } from '../../../types'
+
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+  const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
+  .sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+
+  return paginate(allArticles, { pageSize: 6 });
+}
+
+const { page }: { page: Page<CollectionEntry<'articles'>> } = Astro.props;
+---
+
+<Layout title="Blog Paqge">
+  <section>
+      <h1>All Articles</h1>
+    <div class="article-cards">
+      {page.data.map((article) => (
+        <ArticleCard article={article} />
+      ))}
+    </div>
+  </section>
+
+  <Pagination page={page} />
+</Layout>
+
+<style>
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: red;
+}
+  .search-and-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-size: var(--h1-font);
+  }
+
+  .article-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.8rem;
+  }
+</style>

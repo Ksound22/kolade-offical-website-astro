@@ -27,9 +27,10 @@ if (tag === undefined) {
 }
 
 const allArticles = await fetchAllArticles();
-const tagArticles = allArticles.filter(article => 
+const randomisedArticles = allArticles.sort(() => Math.random() - Math.random())
+const tagArticles = randomisedArticles.filter(article => 
   article.data.tags.some(tag => tag.toLowerCase().replace(/\s+/g, "-") === slug)
-);
+).slice(0, 6);
 ---
   
 <Layout title=`Articles Tagged ${tag}`>

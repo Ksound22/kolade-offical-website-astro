@@ -1,0 +1,57 @@
+---
+const { page } = Astro.props
+---
+
+<section class="page-navigation">
+  <a
+    href={page.url.prev}
+    class={page.url.prev ? '' : 'disabled'}
+    id="prev-page"
+    >
+    Previous
+  </a>
+
+  <a
+    href={page.url.next}
+    class={page.url.next ? '' : 'disabled'}
+    id="next-page"
+    >
+    Next
+  </a>
+
+</section>
+
+<style>
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    display: block;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+  }
+
+  a:visited {
+    color: var(--text-color);
+  }
+
+  a:hover {
+    background: var(--primary-hover);
+  }
+
+  .disabled {
+    background-color: #5b946e;
+  }
+
+  .disabled:hover {
+    background-color: #5b946e;
+    cursor: not-allowed;
+  }
+</style>
