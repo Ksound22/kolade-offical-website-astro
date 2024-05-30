@@ -28,8 +28,8 @@ const currentYear = new Date().getFullYear()
       </div>
 
       <div class="tags">
-        <h2>Top Tags</h2>
-        {uniqueTags.map((tag) => <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}>{tag}</a> )}
+          <h2>Top Tags</h2>
+          {uniqueTags.map((tag) => <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}>{tag}</a> )}
       </div>
         
       <div class="footer-links">
@@ -62,19 +62,6 @@ const currentYear = new Date().getFullYear()
     gap: 1rem;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
-
-  .name {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-
-  .first {
-    color: var(--primary-color);
-  }
-
-  .second {
-    color: var(--accent-color)
   }
 
   .social-links,

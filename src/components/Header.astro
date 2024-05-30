@@ -16,6 +16,9 @@ const pathname = Astro.url.pathname;
  
   <ul class="navigation">
     <li class="navigation-item">
+      <a href="/subscribe" class={pathname === "/subscribe" ? "active" : ""}>Subscribe</a>
+    </li>
+    <li class="navigation-item">
       <a href="/about" class={pathname === "/about" ? "active" : ""}>About</a>
     </li>
     <li class="navigation-item">
