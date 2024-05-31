@@ -47,6 +47,8 @@ import contactImg from '../../public/images/contact-2.webp'
 
   img {
     border-radius: var(--border-radius);
+    max-width: 512px;
+    max-height: 512px;
   }
   
   .result {
@@ -125,7 +127,25 @@ import contactImg from '../../public/images/contact-2.webp'
     background-color: var(--primary-hover);
   }
 
-  
+  @media screen and (max-width: 852px) {
+    h1 {
+      text-align: center;
+    }
+
+    .contact-container {
+      flex-direction: column;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    img {
+      display: none;
+    }
+
+    .form-container {
+      width: 100%;
+    }
+  }
 
 </style>
 

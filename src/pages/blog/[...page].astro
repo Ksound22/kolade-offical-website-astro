@@ -53,4 +53,10 @@ const { page }: { page: Page<CollectionEntry<'articles'>> } = Astro.props;
     flex-wrap: wrap;
     gap: 3.8rem;
   }
+
+  @media screen and (max-width: 852px) {
+     h1 {
+      text-align: center;
+    }
+  }
 </style>

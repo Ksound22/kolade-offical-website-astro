@@ -22,4 +22,10 @@ const latestArticles: CollectionEntry<'articles'>[] = allArticles.slice(0, 3)
     flex-wrap: wrap;
     gap: 3.8rem;
   }
+
+   @media screen and (max-width: 912px) {
+    .article-cards {
+      flex-direction: column;
+    }
+   }
 </style>

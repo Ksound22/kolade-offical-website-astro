@@ -71,7 +71,7 @@ const currentYear = new Date().getFullYear()
   }
 
   iframe {
-    width: 25rem;
+    max-width: 25rem;
   }
 
   .social-links h2,
@@ -104,4 +104,10 @@ const currentYear = new Date().getFullYear()
     font-size: 1.2rem;
     text-align: center;
   }
+
+   @media screen and (max-width: 720px) {
+    .footer-container {
+      flex-direction: column;
+    }
+   }
 </style>
