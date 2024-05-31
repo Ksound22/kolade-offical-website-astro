@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-// import LatestYTVids from '../components/LatestYTVids.astro';
+import LatestYTVids from '../components/LatestYTVids.astro';
 import LatestArticles from '../components/LatestArticles.astro';
 
 ---
@@ -13,14 +13,17 @@ import LatestArticles from '../components/LatestArticles.astro';
 		<h2>Latest Articles</h2>
 		<LatestArticles />
 
-		<h2>Latest YouTube Vidoes</h2>
-		<!-- <LatestYTVids /> -->
+		<h2>Latest YouTube Videos</h2>
+		<LatestYTVids />
 	</div> 
 </Layout>
 
 <style>
 	h2 {
 		font-size: var(--h2-font);
+		margin-top: 2.5rem;
+		margin-bottom: .9rem;
+		text-align: center;
 	}
 </style>
 
