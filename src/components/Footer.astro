@@ -6,14 +6,17 @@ const allArticles = await fetchAllArticles()
 const categories = allArticles.flatMap((article) => article.data.category)
 const uniqueCategories = [...new Set(categories)]
 
-const tags = allArticles.flatMap((article) => article.data.tags)
-const uniqueTags = [...new Set(tags)]
-
 const currentYear = new Date().getFullYear()
 ---
 
 <footer class="footer">
     <div class="footer-container">
+       <div class="subscribe-form">
+        <h2>Subscribe to my Newlsetter</h2>
+        <iframe src="https://embeds.beehiiv.com/bc926598-839b-48e4-9c32-fc46b5255050?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+        <p>No BS. No fluff. Just pure software development goodies.</p>
+      </div>
+
       <div class="social-links">
         <h2>Follow Me</h2>
         <a href="https://freecodecamp.org/news/author/kolade" target="_blank">freeCodeCamp</a>
@@ -25,11 +28,6 @@ const currentYear = new Date().getFullYear()
       <div class="categories">
         <h2>Top Categories</h2>
         {uniqueCategories.map((cat) => <a href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, "-")}`}>{cat}</a> )}
-      </div>
-
-      <div class="tags">
-          <h2>Top Tags</h2>
-          {uniqueTags.map((tag) => <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}>{tag}</a> )}
       </div>
         
       <div class="footer-links">
@@ -67,22 +65,25 @@ const currentYear = new Date().getFullYear()
   .social-links,
   .footer-links,
   .categories,
-  .tags {
+  .subscribe-form {
     flex: 1;
     margin: 20px;
+  }
+
+  iframe {
+    width: 25rem;
   }
 
   .social-links h2,
   .footer-links h2,
   .categories h2,
-  .tags h2 {
+  .subscribe-form h2 {
     margin-bottom: 1.5rem;
   }
 
   .social-links a,
   .footer-links a,
-  .categories a,
-  .tags a {
+  .categories a {
     display: block;
     margin: 10px 0;
     text-decoration: none;
@@ -92,8 +93,7 @@ const currentYear = new Date().getFullYear()
 
   .social-links a:hover,
   .footer-links a:hover,
-  .categories a:hover,
-  .tags a:hover {
+  .categories a:hover {
     text-decoration: underline;
     color: var(--primary-hover);
   }
