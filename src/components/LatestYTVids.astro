@@ -12,8 +12,8 @@ const { items } = await res.json();
         <h3 class="vid-title">{video.snippet.title.substring(0, 33)}...</h3>
         <Image
           src={video.snippet.thumbnails.medium.url}
-          width={380}
-          height={220}
+          width={320}
+          height={180}
           alt={video.snippet.title}
         />
         <a 
@@ -43,7 +43,7 @@ const { items } = await res.json();
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20rem; 
+    width: 320px; 
     background-color: var(--card-bg);
     padding: 1.4rem;
     border-radius: 4px;
@@ -55,7 +55,7 @@ const { items } = await res.json();
 
   .watch-btn {
     text-align: center;
-    width: 100%;
+    width: 90%;
     margin-top: 10px;
     padding: 5px 15px;
     background-color: var(--primary-color);
