@@ -4,14 +4,20 @@ import { FaX } from 'react-icons/fa6';
 
 import Theme from './Theme.astro';
 const pathname = Astro.url.pathname;
+import logo from '../../public/kolade-logo.png'
+import { Image } from 'astro:assets';
 ---
 
 <nav>
   <a href="/">
-    <p class="name">
-      <span class="first">Kolade</span>
-      <span class="second">Chris</span> 
-    </p>
+    <Image
+      src={logo}
+      alt="Kolade Chris"
+      height={0}
+      width={0}
+      sizes='100vw'
+      alt=""
+    >
   </a>
  
   <ul class="navigation">
@@ -52,19 +58,6 @@ const pathname = Astro.url.pathname;
 
   a {
     text-decoration: none;
-  }
-
-  .name {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-
-  .first {
-    color: var(--primary-color);
-  }
-
-  .second {
-    color: var(--accent-color)
   }
 
   nav {
