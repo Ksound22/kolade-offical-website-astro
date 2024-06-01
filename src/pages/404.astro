@@ -5,7 +5,11 @@ import Layout from "../layouts/Layout.astro"
 import notFoundImage from  '../../public/images/404.png'
 ---
 
-<Layout title="Not Found">
+<Layout
+  title="Not Found Page"
+  description="This is the 404 page"
+  canonicalLink=""
+>
   <Image
     src={notFoundImage}
     alt="404 Image"

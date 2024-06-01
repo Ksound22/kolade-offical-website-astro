@@ -29,7 +29,11 @@ const allArticles = await fetchAllArticles();
 const categoryArticles = allArticles.filter(article => article.data.category.toLowerCase().replace(/\s+/g, "-") === slug);
 ---
 
-<Layout title=`${category} Articles`>
+<Layout
+  title=`${category} Articles`
+  description=`Kolade's blog ${category} articles`
+  canonicalLink=""
+>
   <h1>{category} Articles</h1>
   <div class="article-cards">
     {categoryArticles.map((article) => (

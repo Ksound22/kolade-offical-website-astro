@@ -33,7 +33,11 @@ const tagArticles = randomisedArticles.filter(article =>
 ).slice(0, 6);
 ---
   
-<Layout title=`Articles Tagged ${tag}`>
+<Layout
+  title=`Articles Tagged ${tag}`
+  description=`Kolade's blog article with tag ${tag}`
+  canonicalLink=""
+>
 
   <h1>Articles Tagged {tag}</h1>
 

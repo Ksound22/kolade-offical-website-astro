@@ -6,17 +6,46 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
+	description: string;
+	canonicalLink: string;
+	OGTitle?: string;
+  OGDesc?: string;
+  OGImage?: string;
+  OGUrl?: string;
+  xImg?: string;
+  xtitle?: string;
+  xDesc?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, canonicalLink, OGDesc, OGTitle, OGImage, OGUrl, xtitle, xDesc, xImg } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
+
+		{/* OG Tags for SM */}
+		<meta name='og:title' content={OGTitle} />
+		<meta name='og:url' content={OGUrl} />
+		<meta name='og:description' content={OGDesc} />
+		<meta name='og:type' content='website' />
+		<meta name='og:image' content={OGImage} />
+
+		{/* OG Meta Tags for Twitter */}
+		<meta name='twitter:card' content='summary_large_image' />
+		<meta name='twitter:title' content={xtitle} />
+		<meta name='twitter:site' content='astro.blog' />
+		<meta name='twitter:description' content={xDesc} />
+		<meta name='twitter:image' content={xImg} />
+
+		{/* Canonical link */}
+    <link rel='canonical' href={canonicalLink}></link>
+
+		<!-- Sitemap -->
+		<link rel="sitemap" href="" />
 
 		<AstroFont config={[{
 			src: [],

@@ -18,7 +18,11 @@ export async function getStaticPaths({ paginate }) {
 const { page }: { page: Page<CollectionEntry<'articles'>> } = Astro.props;
 ---
 
-<Layout title="Blog Paqge">
+<Layout
+  title="Kolade's Blog | Software development | Technical Writing | Technical Copywriting"
+  description="Your go-to blog for software development, technical writing, and technical copywriting articles"
+  canonicalLink=""
+>
   <section>
       <h1>All Articles</h1>
     <div class="article-cards">
