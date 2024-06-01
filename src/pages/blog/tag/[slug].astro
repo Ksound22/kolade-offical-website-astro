@@ -1,5 +1,5 @@
 ---
-import { fetchAllArticles } from "../../../../utils";
+import { fetchAllArticles, formatTagsAndCats } from "../../../../utils";
 import ArticleCard from "../../../components/ArticleCard.astro";
 import Layout from "../../../layouts/Layout.astro";
 
@@ -29,7 +29,7 @@ if (tag === undefined) {
 const allArticles = await fetchAllArticles();
 const randomisedArticles = allArticles.sort(() => Math.random() - Math.random())
 const tagArticles = randomisedArticles.filter(article => 
-  article.data.tags.some(tag => tag.toLowerCase().replace(/\s+/g, "-") === slug)
+  article.data.tags.some(tag => formatTagsAndCats(tag) === slug)
 ).slice(0, 6);
 ---
   
