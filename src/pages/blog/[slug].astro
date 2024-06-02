@@ -1,15 +1,10 @@
 ---
-// import { getCollection } from "astro:content";
-// import type { CollectionEntry } from "astro:content";
-
 import Layout from "../../layouts/Layout.astro";
 import TableOfContentHeadings from "../../components/TableOfContentHeadings.astro";
 import { formatDate, buildTOC, fetchAllArticles } from "../../../utils";
 import ReatedArticles from "../../components/ReatedArticles.astro";
 
 export async function getStaticPaths () {
-  // const allArticles: CollectionEntry<'articles'>[] = await getCollection('articles')
-
   const allArticles = await fetchAllArticles()
 
   return allArticles.map(entry => ({
@@ -124,7 +119,7 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     max-width: 30%;
     max-height: 100vh;
     position: sticky;
-    top: 30px; 
+    top: 70px; 
     /* overflow-y: auto; */
     flex: 1;
     padding-left: 30px;

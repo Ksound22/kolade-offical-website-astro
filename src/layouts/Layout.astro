@@ -17,6 +17,8 @@ interface Props {
   xImg?: string;
   xtitle?: string;
   xDesc?: string;
+	xSite?: string;
+	xCreator?: string;
 }
 
 const {
@@ -29,7 +31,9 @@ const {
 	OGUrl = "https://www.koladechris.com/",
 	xtitle = "Kolade Chris | Software development | Technical Writing | Technical Copywriting",
 	xDesc = "Insights and tips in software development, technical writing, and technical copywriting to help you excel in the tech world",
-	xImg = "https://www.koladechris.com/ogImage.png"
+	xImg = "https://www.koladechris.com/ogImage.png",
+	xSite = "@Ksound22",
+	xCreator = "@Ksound22"
 	} = Astro.props;
 ---
 
@@ -50,9 +54,10 @@ const {
 		{/* OG Meta Tags for Twitter */}
 		<meta name='twitter:card' content='summary_large_image' />
 		<meta name='twitter:title' content={xtitle} />
-		<meta name='twitter:site' content='astro.blog' />
 		<meta name='twitter:description' content={xDesc} />
 		<meta name='twitter:image' content={xImg} />
+		<meta name='twitter:site' content={xSite} />
+		<meta name='twitter:creator' content={xCreator} />
 
 		{/* Canonical link */}
 		<link rel='canonical' href={canonicalLink} />
