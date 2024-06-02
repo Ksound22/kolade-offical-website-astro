@@ -4,6 +4,8 @@ import { AstroFont } from 'astro-font';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+import SMImage from '../../public/ogImage.png'
+
 interface Props {
 	title: string;
 	description: string;
@@ -17,7 +19,18 @@ interface Props {
   xDesc?: string;
 }
 
-const { title, description, canonicalLink, OGDesc, OGTitle, OGImage, OGUrl, xtitle, xDesc, xImg } = Astro.props;
+const {
+	title = "Kolade Chris | Software development | Technical Writing | Technical Copywriting",
+	description = "Insights and tips in software development, technical writing, and technical copywriting to help you excel in the tech world",
+	canonicalLink = "https://www.koladechris.com/",
+	OGDesc = "Insights and tips in software development, technical writing, and technical copywriting to help you excel in the tech world",
+	OGTitle = "Kolade Chris | Software development | Technical Writing | Technical Copywriting",
+	OGImage = "https://www.koladechris.com/ogImage.png",
+	OGUrl = "https://www.koladechris.com/",
+	xtitle = "Kolade Chris | Software development | Technical Writing | Technical Copywriting",
+	xDesc = "Insights and tips in software development, technical writing, and technical copywriting to help you excel in the tech world",
+	xImg = "https://www.koladechris.com/ogImage.png"
+	} = Astro.props;
 ---
 
 <!doctype html>

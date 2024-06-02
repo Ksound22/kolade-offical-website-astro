@@ -35,8 +35,16 @@ const tagArticles = randomisedArticles.filter(article =>
   
 <Layout
   title=`Articles Tagged ${tag}`
+  description=`Kolade's blog ${tag} articles`
+  canonicalLink=`https://www.koladechris.com/blog/${formatTagsAndCats(tag)}`
+  title=`Kolade's blog article with tag ${tag}`
   description=`Kolade's blog article with tag ${tag}`
-  canonicalLink=""
+  canonicalLink=`https://www.koladechris.com/blog/${formatTagsAndCats(tag)}`
+  OGUrl=`https://www.koladechris.com/blog/${formatTagsAndCats(tag)}`
+  OGTitle=`Kolade's blog article with tag ${tag}`
+  OGDesc=`Kolade's blog ${tag} articles`
+  xtitle=`Kolade's blog article with tag ${tag}`
+  xDesc=`Kolade's blog ${tag} articles`
 >
 
   <h1>Articles Tagged {tag}</h1>

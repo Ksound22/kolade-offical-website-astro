@@ -31,9 +31,19 @@ const categoryArticles = randomisedArticles.filter(article => formatTagsAndCats(
 ---
 
 <Layout
-  title=`${category} Articles`
+  title=`Kolade's blog ${category} articles`
+  description=`Kolade's blog articles in the ${category} category`
+  canonicalLink=`https://www.koladechris.com/blog/category/${formatTagsAndCats(category)}`
   description=`Kolade's blog ${category} articles`
-  canonicalLink=""
+  canonicalLink=`https://www.koladechris.com/blog/category/${formatTagsAndCats(category)}`
+  title=`Kolade's blog article with category ${category}`
+  description=`Kolade's blog article with category ${category}`
+  canonicalLink=`https://www.koladechris.com/blog/category/${formatTagsAndCats(category)}`
+  OGUrl=`https://www.koladechris.com/blog/category/${formatTagsAndCats(category)}`
+  OGTitle=`Kolade's blog ${category} articles`
+  OGDesc=`Kolade's blog articles in the ${category} category`
+  xtitle=`Kolade's blog ${category} articles`
+  xDesc=`Kolade's blog articles in the ${category} category`
 >
   <h1>{category} Articles</h1>
   <div class="article-cards">

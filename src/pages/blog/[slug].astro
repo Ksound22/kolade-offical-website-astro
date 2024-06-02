@@ -39,12 +39,21 @@ const randomisedArticles = allArticles.sort(() => Math.random() - Math.random())
 const relatedArticles = randomisedArticles.filter(article => {
   return article.data.category === currentPostCategory && article.slug !== currentPostSlug
 }).slice(0, 3);
+
+const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 ---
 
 <Layout
   title={entry.data.title}
   description={entry.data.excerpt}
-  canonicalLink=""
+  canonicalLink={currentURL}
+  OGUrl={currentURL}
+  OGTitle= {entry.data.title}
+  OGDesc= {entry.data.excerpt}
+  OGImage={entry.data.coverImage}
+  xtitle= {entry.data.title}
+  xDesc= {entry.data.excerpt}
+  xImg={entry.data.coverImage}
 >
   <a href='/blog' role="button" class="back">Back to Blog Page</a>
   
