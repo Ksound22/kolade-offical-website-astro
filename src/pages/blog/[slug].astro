@@ -66,7 +66,7 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
   <img
     src={entry.data.coverImage}
     alt={entry.data.title}
-    class="cover-photo" 
+    class="cover-photo"
   />
 
   <p class="stats">Written by {entry.data.author} | { formatDate(entry.data.publishedDate)} |
@@ -98,7 +98,7 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
       </nav>
       <div class="share">
         <h2>Share this Article</h2>
-      <ShareOnSM entry={entry} />
+        <ShareOnSM entry={entry} />
       </div>
       <div>
         <h2>Related Posts</h2>
@@ -290,7 +290,7 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
   window.addEventListener('scroll', handleScroll);
   handleScroll();
 
-  const copyToClipboard = (e) => {
+  const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.toString());
     copiedText.innerHTML = `<p>Link Copied!</p>`
 
