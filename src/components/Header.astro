@@ -1,7 +1,4 @@
 ---
-import { FaBars } from 'react-icons/fa';
-import { FaX } from 'react-icons/fa6';
-
 import Theme from './Theme.astro';
 const pathname = Astro.url.pathname;
 import logo from '../../public/kolade-logo.png'
@@ -40,8 +37,8 @@ import { Image } from 'astro:assets';
     <Theme />
   </ul>
   <button class="burger-menu" id="burger-menu">
-    <span class="bars"> <FaBars /> </span>
-    <span class="x" ><FaX /></span>
+    <ion-icon name="menu-outline" class="bars"></ion-icon>
+    <ion-icon name="close-outline" class="x" ></ion-icon>
   </button>
 </nav>
 
@@ -73,9 +70,6 @@ import { Image } from 'astro:assets';
    border-bottom: 0.5px solid gray;
   }
 
-  nav h1 {
-    color: var();
-  }
 
   nav a {
     color: unset;
@@ -115,6 +109,16 @@ import { Image } from 'astro:assets';
 
   .burger-menu.open .x {
     display: block;
+  }
+
+  ion-icon {
+   color: var(--primary-color);
+   font-size: 54px;
+  }
+
+  ion-icon:hover {
+   color: var(--primary-hover);
+   cursor: pointer;
   }
 
   .active {

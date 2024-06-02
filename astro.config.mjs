@@ -1,6 +1,4 @@
 import { defineConfig } from 'astro/config';
-
-import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 import astroExpressiveCode from 'astro-expressive-code';
@@ -11,7 +9,6 @@ export default defineConfig({
   site: 'http://localhost:4321',
   integrations: [
     sitemap(),
-    react(),
     astroExpressiveCode({
       plugins: [pluginLineNumbers()],
       themes: ['monokai'],
