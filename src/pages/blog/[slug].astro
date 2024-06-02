@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import TableOfContentHeadings from "../../components/TableOfContentHeadings.astro";
 import { formatDate, buildTOC, fetchAllArticles } from "../../../utils";
 import ReatedArticles from "../../components/ReatedArticles.astro";
+import ShareOnSM from "../../components/ShareOnSM.astro";
 
 export async function getStaticPaths () {
   const allArticles = await fetchAllArticles()
@@ -36,13 +37,6 @@ const relatedArticles = randomisedArticles.filter(article => {
 }).slice(0, 3);
 
 const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
-
-//social media share links
-const twitterShareLink = `https://twitter.com/share?url=${currentURL}&text=${entry.data.title}&via=ksound22`;
-const fbShareLink = `https://www.facebook.com/sharer.php?u=${currentURL}`;
-const lkShareLink = `https://www.linkedin.com/shareArticle?url=${currentURL}&title=${entry.data.title}`;
-const redditShareLink = `https://reddit.com/submit?url=${currentURL}&title=${entry.data.title}`;
-const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
 ---
 
 <Layout
@@ -89,6 +83,9 @@ const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
   <div class="single-article-container">
     <div class="article-details">
       <Content />
+
+      <p>Share the article with your friends and family:</p>
+      <ShareOnSM entry={entry} />
     </div>
 
     <aside class="toc-and-related">
@@ -101,24 +98,7 @@ const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
       </nav>
       <div class="share">
         <h2>Share this Article</h2>
-        <a target="_blank">
-          <ion-icon name="link" class="share copy-link" size="large"></ion-icon>
-        </a>
-        <a href={twitterShareLink} target="_blank">
-          <ion-icon name="logo-twitter" class="share whatsapp" size="large"></ion-icon>
-        </a>
-        <a href={whatsappShareLink} target="_blank">
-          <ion-icon name="logo-whatsapp" class="share whatsapp" size="large"></ion-icon>
-        </a>
-        <a href={lkShareLink} target="_blank">
-          <ion-icon name="logo-linkedin" class="share whatsapp" size="large"></ion-icon>
-        </a>
-        <a href={fbShareLink} target="_blank">
-          <ion-icon name="logo-facebook" class="share whatsapp" size="large"></ion-icon>
-        </a>
-        <a href={redditShareLink} target="_blank">
-          <ion-icon name="logo-reddit" class="share reddit" size="large"></ion-icon>
-        </a>
+      <ShareOnSM entry={entry} />
       </div>
       <div>
         <h2>Related Posts</h2>
@@ -149,8 +129,7 @@ const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
     max-width: 30%;
     max-height: 100vh;
     position: sticky;
-    top: 70px; 
-    /* overflow-y: auto; */
+    top: 70px;
     flex: 1;
     padding-left: 30px;
   }
@@ -191,16 +170,13 @@ const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
     color: var(--accent-color);
     margin-bottom: 0.5rem;
   }
-
-  .share a {
-    text-decoration: none;
-  }
 </style>
 
 <style is:global>
 
   h2 {
     font-size: var(--h2-font);
+    color: var(--primary-color);
     margin-top: 3.5rem;
     margin-bottom: 0
   }

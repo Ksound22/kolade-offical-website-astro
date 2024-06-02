@@ -1,0 +1,37 @@
+---
+//social media share links
+
+const { entry } = Astro.props 
+
+const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
+const twitterShareLink = `https://twitter.com/share?url=${currentURL}&text=${entry.data.title}&via=ksound22`;
+const fbShareLink = `https://www.facebook.com/sharer.php?u=${currentURL}`;
+const lkShareLink = `https://www.linkedin.com/shareArticle?url=${currentURL}&title=${entry.data.title}`;
+const redditShareLink = `https://reddit.com/submit?url=${currentURL}&title=${entry.data.title}`;
+const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
+---
+  <a target="_blank">
+    <ion-icon name="link" class="share copy-link" size="large"></ion-icon>
+  </a>
+  <a href={twitterShareLink} target="_blank">
+    <ion-icon name="logo-twitter" class="share whatsapp" size="large"></ion-icon>
+  </a>
+  <a href={whatsappShareLink} target="_blank">
+    <ion-icon name="logo-whatsapp" class="share whatsapp" size="large"></ion-icon>
+  </a>
+  <a href={lkShareLink} target="_blank">
+    <ion-icon name="logo-linkedin" class="share whatsapp" size="large"></ion-icon>
+  </a>
+  <a href={fbShareLink} target="_blank">
+    <ion-icon name="logo-facebook" class="share whatsapp" size="large"></ion-icon>
+  </a>
+  <a href={redditShareLink} target="_blank">
+    <ion-icon name="logo-reddit" class="share reddit" size="large"></ion-icon>
+  </a>
+
+  <style>
+     a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+  </style>
