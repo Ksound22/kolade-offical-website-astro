@@ -12,10 +12,6 @@ export default defineConfig({
     astroExpressiveCode({
       plugins: [pluginLineNumbers()],
       themes: ['monokai'],
-      shiki: {
-        // You can pass additional plugin options here,
-        // e.g. to load custom language grammars:
-      },
     }),
   ],
 });
