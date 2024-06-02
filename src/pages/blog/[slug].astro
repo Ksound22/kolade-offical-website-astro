@@ -36,6 +36,13 @@ const relatedArticles = randomisedArticles.filter(article => {
 }).slice(0, 3);
 
 const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
+
+//social media share links
+const twitterShareLink = `https://twitter.com/share?url=${currentURL}&text=${entry.data.title}&via=ksound22`;
+const fbShareLink = `https://www.facebook.com/sharer.php?u=${currentURL}`;
+const lkShareLink = `https://www.linkedin.com/shareArticle?url=${currentURL}&title=${entry.data.title}`;
+const redditShareLink = `https://reddit.com/submit?url=${currentURL}&title=${entry.data.title}`;
+const whatsappShareLink = `whatsapp://send?text=${currentURL}`;
 ---
 
 <Layout
@@ -50,6 +57,9 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
   xDesc= {entry.data.excerpt}
   xImg={entry.data.coverImage}
 >
+
+  <div class="copied"></div>
+
   <a href='/blog' role="button" class="back">Back to Blog Page</a>
   
   <div class="category-container">
@@ -93,13 +103,32 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
           {toc.map((heading) => <TableOfContentHeadings heading={heading} />)}
         </ul>
       </nav>
-
+      <div class="share">
+        <h2>Share this Article</h2>
+        <a target="_blank">
+          <ion-icon name="link" class="share copy-link" size="large"></ion-icon>
+        </a>
+        <a href={twitterShareLink} target="_blank">
+          <ion-icon name="logo-twitter" class="share whatsapp" size="large"></ion-icon>
+        </a>
+        <a href={whatsappShareLink} target="_blank">
+          <ion-icon name="logo-whatsapp" class="share whatsapp" size="large"></ion-icon>
+        </a>
+        <a href={lkShareLink} target="_blank">
+          <ion-icon name="logo-linkedin" class="share whatsapp" size="large"></ion-icon>
+        </a>
+        <a href={fbShareLink} target="_blank">
+          <ion-icon name="logo-facebook" class="share whatsapp" size="large"></ion-icon>
+        </a>
+        <a href={redditShareLink} target="_blank">
+          <ion-icon name="logo-reddit" class="share reddit" size="large"></ion-icon>
+        </a>
+      </div>
       <div>
         <h2>Related Posts</h2>
         <ReatedArticles relatedArticle={relatedArticles} />
       </div>
     </aside>
-
   </div>
 </Layout>
 
@@ -108,6 +137,12 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     display: flex;
     gap: 2.5rem;
     height: auto;
+  }
+
+  .copied {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 0 auto;
   }
 
   .article-details {
@@ -123,6 +158,15 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     /* overflow-y: auto; */
     flex: 1;
     padding-left: 30px;
+  }
+
+  ion-icon {
+   color: var(--primary-color);
+  }
+
+  ion-icon:hover {
+   color: var(--primary-hover);
+   cursor: pointer;
   }
 
   h1 {
@@ -150,6 +194,11 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 
   aside h2 {
     color: var(--accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .share a {
+    text-decoration: none;
   }
 </style>
 
@@ -221,6 +270,8 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 <script>
   const headingElements = document.querySelectorAll('h2[id], h3[id], h4[id]');
   const tocLinks = document.querySelectorAll('.toc-link');
+  const copyLink = document.querySelector(".copy-link")
+  const copiedText = document.querySelector(".copied")
 
   function handleScroll() {
     const scrollPosition = window.scrollY + (window.innerHeight / 2);
@@ -238,4 +289,15 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 
   window.addEventListener('scroll', handleScroll);
   handleScroll();
+
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(window.location.toString());
+    copiedText.innerHTML = `<p>Link Copied!</p>`
+
+    setTimeout(() => {
+      copiedText.innerHTML = ""
+    }, 2000);
+  };
+
+  copyLink.addEventListener('click', copyToClipboard)
 </script>
