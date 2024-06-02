@@ -2,7 +2,7 @@
 title: 'What is the HTML Role Attribute?'
 publishedDate: 2022-12-23
 author: 'Kolade Chris'
-coverImage: '/images/blogPostCovers/html-role-attribute.webp'
+coverImage: '/images/blogPostCovers/html-role-attribute.png'
 tags: ['HTML', 'WebDev']
 category: 'Frontend Development'
 readingTime: '2 minutes'

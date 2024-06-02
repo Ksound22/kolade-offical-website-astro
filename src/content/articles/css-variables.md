@@ -2,12 +2,12 @@
 title: 'The CSS var() Function – How to Create and Use CSS Variables'
 publishedDate: 2022-12-28
 author: 'Kolade Chris'
-coverImage: '/images/blogPostCovers/css-variables.webp'
+coverImage: '/images/blogPostCovers/css-variables.png'
 tags: ['CSS', 'WebDev']
 category: 'Frontend Development'
 readingTime: '3 minutes'
 excerpt: 'Yes. You can declare and reuse variables in CSS by reading this article.'
-slug: how-to-create-and-use-css-variables
+slug: the-css-var-function-how-to-create-and-use-css-variables
 ---
 
 CSS variables, AKA CSS custom properties came into existence due to the need to have a consistent and maintainable CSS stylesheet. Instead of repeatedly defining the same style declaration over and over again, why not define it once, use it in multiple style declarations, and change it all in one place?

@@ -2,7 +2,7 @@
 title: 'How to Add the lang Attribute to the Root of your Next JS Website without _document.js'
 publishedDate: 2022-12-21
 author: 'Kolade Chris'
-coverImage: '/images/blogPostCovers/html-lang.webp'
+coverImage: '/images/blogPostCovers/html-lang.png'
 tags: ['Next JS', 'WebDev']
 category: 'Frontend Development'
 readingTime: '1 minute'
