@@ -84,7 +84,10 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     <div class="article-details">
       <Content />
 
-      <p>Share the article with your friends and family:</p>
+      <p class="share-p">Share this article by copying the link:</p>
+      <ion-icon name="link" class="share copy-link" size="large"></ion-icon>
+
+      <p class="share-p">Or share the it with your friends and family on social media:</p>
       <ShareOnSM entry={entry} />
     </div>
 
@@ -119,6 +122,10 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     text-align: center;
     color: var(--primary-color);
     margin: 0 auto;
+
+    position: fixed;
+    top: 30%;
+    left: 50%;
   }
 
   .article-details {
@@ -132,6 +139,7 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     top: 70px;
     flex: 1;
     padding-left: 30px;
+    overflow-y: auto;
   }
 
   ion-icon {
@@ -237,6 +245,10 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     border-left: 2px solid var(--primary-color);
     padding-left: .3rem;
     color: var(--primary-color);
+  }
+
+  .share-p {
+    font-size: 1.3rem;
   }
 
   @media screen and (max-width: 1024px){
