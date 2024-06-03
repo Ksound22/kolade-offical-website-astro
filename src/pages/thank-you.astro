@@ -1,0 +1,29 @@
+---
+import LatestArticles from "../components/LatestArticles.astro";
+import Layout from "../layouts/Layout.astro";
+
+
+---
+
+<Layout
+  title="Thank you for Subscribing"
+  description="Thank you for subscribing"
+  canonicalLink="https://www.koladechris.com/thank-you"
+  >
+
+  <h2>Thank you for Subscribing to Kolade Dev Digest Newsletter. Look out for the next issue coming your way soon.</h2>
+
+  <h2>In the mean-time, you can read my latest blog post.</h2>
+
+  <LatestArticles />
+
+  <h2>You can also read the previous issues </h2>
+
+</Layout>
+
+<style>
+
+  h2 {
+    font-size: var(--h2-font);
+  }
+</style>
