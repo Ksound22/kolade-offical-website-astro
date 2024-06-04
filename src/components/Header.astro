@@ -6,7 +6,7 @@ import { Image } from 'astro:assets';
 ---
 
 <nav>
-  <a href="/">
+  <a href="/" aria-label="logo">
     <Image
       src={logo}
       alt="Kolade Chris"
@@ -17,7 +17,7 @@ import { Image } from 'astro:assets';
     >
   </a>
  
-  <ul class="navigation">
+  <ul class="navigation" role="tablist">
     <li class="navigation-item">
       <a href="/subscribe" class={pathname === "/subscribe" ? "active" : ""}>Subscribe</a>
     </li>
