@@ -199,10 +199,6 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     font-size: var(--paragraph-font);
   }
 
-  pre {
-    padding: 1rem;
-  }
-
   p {
     font-size: var(--paragraph-font);
     line-height: var(--line-height);;
@@ -280,8 +276,12 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
   }
 
   @media screen and (max-width: 820px) {
-    p {
+    p, .share-p {
       font-size: 1.2rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
     }
 
     img {
