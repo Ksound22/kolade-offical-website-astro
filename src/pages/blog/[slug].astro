@@ -104,7 +104,7 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
         <ShareOnSM entry={entry} />
       </div>
       <div>
-        <h2>Related Posts</h2>
+        {relatedArticles.length > 0 ? <h2>Related Posts</h2> : ''}
         <ReatedArticles relatedArticle={relatedArticles} />
       </div>
     </aside>
