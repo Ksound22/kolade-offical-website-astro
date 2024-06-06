@@ -6,7 +6,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'http://localhost:4321',
+  site: 'https://www.koladechris.com',
   integrations: [
     sitemap(),
     astroExpressiveCode({
