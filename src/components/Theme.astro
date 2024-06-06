@@ -59,6 +59,7 @@
 </style>
 
 <script>
+  document.addEventListener('astro:page-load', () => {
   const themeToggle:any = document.querySelector('.checkbox');
   const currentTheme = localStorage.getItem("theme");
 
@@ -80,4 +81,19 @@
   }
 
   themeToggle.addEventListener("change", switchTheme, false);
+  })
+</script>
+
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    const themeToggle:any = document.querySelector('.checkbox');
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme) {
+      document.documentElement.setAttribute("data-theme", currentTheme);
+      if (currentTheme === "dark") {
+        themeToggle.checked = true;
+      }
+    }
+  })
 </script>

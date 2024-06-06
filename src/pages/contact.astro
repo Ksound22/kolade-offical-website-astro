@@ -157,7 +157,8 @@ import contactImg from '../../public/images/contact-2.webp'
 </style>
 
 <script is:inline>
-  const form = document.getElementById('form');
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('form');
   const result = document.getElementById('result');
   
   form.addEventListener('submit', function(e) {
@@ -197,4 +198,5 @@ import contactImg from '../../public/images/contact-2.webp'
         }, 4000);
       });
   });
+  })
   </script>

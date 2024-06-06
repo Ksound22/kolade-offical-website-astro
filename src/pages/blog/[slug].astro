@@ -291,36 +291,38 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 </style>
 
 <script>
-  const headingElements = document.querySelectorAll('h2[id], h3[id], h4[id]');
-  const tocLinks = document.querySelectorAll('.toc-link');
-  const copyLink = document.querySelector(".copy-link")
-  const copiedText = document.querySelector(".copied")
+  document.addEventListener('astro:page-load', () => {
+    const headingElements = document.querySelectorAll('h2[id], h3[id], h4[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const copyLink = document.querySelector(".copy-link")
+    const copiedText = document.querySelector(".copied")
 
-  function handleScroll() {
-    const scrollPosition = window.scrollY + (window.innerHeight / 2);
+    function handleScroll() {
+      const scrollPosition = window.scrollY + (window.innerHeight / 2);
 
-    headingElements.forEach((heading, index) => {
-      const headingTop = heading.getBoundingClientRect().top + window.scrollY;
-      const isActive = scrollPosition >= headingTop;
+      headingElements.forEach((heading, index) => {
+        const headingTop = heading.getBoundingClientRect().top + window.scrollY;
+        const isActive = scrollPosition >= headingTop;
 
-      if (isActive) {
-        tocLinks.forEach((link) => link.classList.remove('active'));
-        tocLinks[index].classList.add('active');
-      }
-    });
-  }
+        if (isActive) {
+          tocLinks.forEach((link) => link.classList.remove('active'));
+          tocLinks[index].classList.add('active');
+        }
+      });
+    }
 
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.toString());
-    copiedText.innerHTML = `<p>Link Copied!</p>`
+    const copyToClipboard = () => {
+      navigator.clipboard.writeText(window.location.toString());
+      copiedText.innerHTML = `<p>Link Copied!</p>`
 
-    setTimeout(() => {
-      copiedText.innerHTML = ""
-    }, 2000);
-  };
+      setTimeout(() => {
+        copiedText.innerHTML = ""
+      }, 2000);
+    };
 
-  copyLink.addEventListener('click', copyToClipboard)
+    copyLink.addEventListener('click', copyToClipboard)
+  })
 </script>

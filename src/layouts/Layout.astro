@@ -4,6 +4,9 @@ import { AstroFont } from 'astro-font';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+import { ViewTransitions } from 'astro:transitions';
+import { slide } from 'astro:transitions';
+
 interface Props {
 	title: string;
 	description: string;
@@ -80,12 +83,12 @@ const {
 		/>
 
 		 <!-- <meta name='google-site-verification' content='MnfHtXBzkQzeru-W6NgDFRQAj7uCklIhiUqigyRGZgM' /> -->
-
+		<ViewTransitions />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
 	</head>
-	<body>
+	<body transition:animate={slide({ duration: '0.5s' })}>
 		<Header />
 		<main style="background-color: var(--light-bg);" class="main-page-content">
 			<slot />
