@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import TableOfContentHeadings from "../../components/TableOfContentHeadings.astro";
-import { formatDate, buildTOC, fetchAllArticles } from "../../../utils";
+import { formatDate, buildTOC, fetchAllArticles, formatTagsAndCats } from "../../../utils";
 import ReatedArticles from "../../components/ReatedArticles.astro";
 import ShareOnSM from "../../components/ShareOnSM.astro";
 
@@ -54,10 +54,22 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 
   <div class="copied"></div>
 
-  <a href='/blog' role="button" class="back">Back to Blog Page</a>
+  <a
+    href='/blog'
+    role="button"
+    class="back"
+    transition:name="blog-page"
+    >
+    Back to Blog Page
+  </a>
   
   <div class="category-container">
-    <a href={`/blog/category/${entry.data.category.toLowerCase().replace(/\s+/, "-")}`} class="category" role="button">
+    <a
+      href={`/blog/category/${formatTagsAndCats(entry.data.category)}`}
+      class="category"
+      role="button"
+      transition:name={entry.data.category}
+      >
       {entry.data.category}
     </a>
   </div>
@@ -73,7 +85,12 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
   
     {entry.data.tags.map((tag:string, index:number) => (
       <span>
-        <a class={index % 2 === 0 ? 'even-tag' : 'odd-tag'} href={`/blog/tag/${tag.toLowerCase()?.replace(/\s+/, "-")}`} class="tag">
+        <a
+          class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}
+          href={`/blog/tag/${formatTagsAndCats(tag)}`}
+          class="tag"
+          transition:name={tag}
+          >
           #{tag}
         </a>
       </span>

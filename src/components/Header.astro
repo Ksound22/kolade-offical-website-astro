@@ -19,19 +19,50 @@ import { Image } from 'astro:assets';
  
   <ul class="navigation" role="tablist">
     <li class="navigation-item">
-      <a href="/newsletter" class={pathname === "/newsletter" ? "active" : ""}>Newsletter</a>
+      <a
+        href="/newsletter"
+        class={pathname === "/newsletter" ? "active" : ""}
+        transition:name="newsletter-page"
+        >
+        Newsletter
+      </a>
+    </li>
+
+    <li class="navigation-item">
+      <a
+        href="/about"
+        class={pathname === "/about" ? "active" : ""}
+        transition:name="about-page"
+        >
+        About
+      </a>
     </li>
     <li class="navigation-item">
-      <a href="/about" class={pathname === "/about" ? "active" : ""}>About</a>
+      <a
+        href="/blog"
+        class={pathname === "/blog" ? "active" : ""}
+        transition:name="blog-page"
+        >
+        Blog
+      </a>
     </li>
     <li class="navigation-item">
-      <a href="/blog"  class={pathname === "/blog" ? "active" : ""}>Blog</a>
+      <a
+        href="/services"
+        class={pathname === "/services" ? "active" : ""}
+        transition:name="services-page"
+        >
+        Services
+      </a>
     </li>
     <li class="navigation-item">
-      <a href="/services"  class={pathname === "/services" ? "active" : ""}>Services</a>
-    </li>
-    <li class="navigation-item">
-      <a href="/contact"  class={pathname === "/contact" ? "active" : ""}>Contact</a>
+      <a
+        href="/contact"
+        class={pathname === "/contact" ? "active" : ""}
+        transition:name="contact-page"
+        >
+        Contact
+      </a>
     </li>
     
     <Theme />

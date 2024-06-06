@@ -10,7 +10,11 @@ interface Props {
 ---
 
 <div class="article-card">
-  <a href={`/blog/${article.data.slug}`} class="article-link">
+  <a
+    href={`/blog/${article.data.slug}`}
+    class="article-link"
+    transition:name={article.data.slug}
+    >
     <img
       src={article.data.coverImage}
       alt={article.data.title}
@@ -19,7 +23,11 @@ interface Props {
   </a>
   <div class="article-card-content">
     <h3 class="article-title">
-      <a href={`/blog/${article.data.slug}`} class="article-title-link">
+      <a
+        href={`/blog/${article.data.slug}`}
+        class="article-title-link"
+        transition:name={article.data.slug}
+        >
         {article.data.title}
       </a>
     </h3>
@@ -27,7 +35,11 @@ interface Props {
       <div class="tags">
         {article.data.tags.map((tag:string, index:number) => (
           <span class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}>
-            <a href={`/blog/tag/${tag.toLowerCase()?.replace(/\s+/, "-")}`} class="tag">
+            <a
+              href={`/blog/tag/${tag.toLowerCase()?.replace(/\s+/, "-")}`}
+              class="tag"
+              transition:name={tag}
+              >
               #{tag}
             </a>
           </span>
