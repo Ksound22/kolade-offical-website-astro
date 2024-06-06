@@ -1,7 +1,14 @@
 ---
+const { href, transitionName, target } = Astro.props
 ---
 <div class="read-more-btn">
-  <a href="/blog" transition:name="blog-page">Read More Articles</a>
+  <a
+    href={href}
+    transition:name={transitionName}
+    target={target}
+    >
+    <slot />
+  </a>
 </div>
 
 <style>

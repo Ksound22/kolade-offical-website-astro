@@ -1,9 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-// import LatestYTVids from '../components/LatestYTVids.astro';
+import LatestYTVids from '../components/LatestYTVids.astro';
 import LatestArticles from '../components/LatestArticles.astro';
-import ReadMoreBtn from '../components/ReadMoreBtn.astro';
+import ReadMoreYTSubBtn from '../components/ReadMoreYTSubBtn.astro';
 ---
 
 <Layout
@@ -18,10 +18,22 @@ import ReadMoreBtn from '../components/ReadMoreBtn.astro';
 		<h2>Latest Articles</h2>
 		<LatestArticles />
 
-		<ReadMoreBtn class="read-more" />
+		<ReadMoreYTSubBtn
+			href={`/blog`}
+			transitionName={`blog-page`}
+			>
+			Read More Articles
+		</ReadMoreYTSubBtn>
 	
 		<h2>Latest YouTube Videos</h2>
-		<!-- <LatestYTVids /> -->
+		<LatestYTVids />
+
+		<ReadMoreYTSubBtn
+			href={`https://www.youtube.com/channel/UCwkj9jcrMZCcbcIa6nF5LNQ`}
+			target={`_blank`}
+			>
+			Subscribe to my YouTube Channel
+		</ReadMoreYTSubBtn>
 	</div> 
 </Layout>
 
