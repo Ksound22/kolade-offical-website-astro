@@ -82,7 +82,7 @@ const {
 		}]}
 		/>
 
-		 <meta name='google-site-verification' content='MnfHtXBzkQzeru-W6NgDFRQAj7uCklIhiUqigyRGZgM' />
+		 <meta name='google-site-verification' content={import.meta.env.GOOGLE_SITE_VERIFICATION}  />
 		<ViewTransitions />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -90,7 +90,7 @@ const {
 	</head>
 	<body transition:animate={slide({ duration: '0.5s' })}>
 		<Header />
-		<main style="background-color: var(--light-bg);" class="main-page-content">
+		<main class="main-page-content">
 			<slot />
 		</main>
 		<Footer />
