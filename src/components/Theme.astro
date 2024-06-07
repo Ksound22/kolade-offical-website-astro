@@ -85,7 +85,6 @@
 </script>
 
 <script>
-  document.addEventListener('astro:after-swap', () => {
     const themeToggle:any = document.querySelector('.checkbox');
     const currentTheme = localStorage.getItem("theme");
 
@@ -95,5 +94,4 @@
         themeToggle.checked = true;
       }
     }
-  })
 </script>

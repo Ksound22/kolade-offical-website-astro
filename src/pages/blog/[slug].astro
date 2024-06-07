@@ -58,7 +58,6 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     href='/blog'
     role="button"
     class="back"
-    transition:name="blog-page"
     >
     Back to Blog Page
   </a>
@@ -68,7 +67,6 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
       href={`/blog/category/${formatTagsAndCats(entry.data.category)}`}
       class="category"
       role="button"
-      transition:name={entry.data.category}
       >
       {entry.data.category}
     </a>
@@ -89,7 +87,6 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
           class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}
           href={`/blog/tag/${formatTagsAndCats(tag)}`}
           class="tag"
-          transition:name={tag}
           >
           #{tag}
         </a>

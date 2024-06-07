@@ -1,10 +1,9 @@
 ---
-const { href, transitionName, target } = Astro.props
+const { href, target } = Astro.props
 ---
 <div class="read-more-btn">
   <a
     href={href}
-    transition:name={transitionName}
     target={target}
     >
     <slot />

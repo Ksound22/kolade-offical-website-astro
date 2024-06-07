@@ -13,7 +13,6 @@ interface Props {
   <a
     href={`/blog/${article.data.slug}`}
     class="article-link"
-    transition:name={article.data.slug}
     >
     <img
       src={article.data.coverImage}
@@ -26,7 +25,6 @@ interface Props {
       <a
         href={`/blog/${article.data.slug}`}
         class="article-title-link"
-        transition:name={article.data.slug}
         >
         {article.data.title}
       </a>
@@ -38,7 +36,6 @@ interface Props {
             <a
               href={`/blog/tag/${tag.toLowerCase()?.replace(/\s+/, "-")}`}
               class="tag"
-              transition:name={tag}
               >
               #{tag}
             </a>
