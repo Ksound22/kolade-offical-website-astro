@@ -59,7 +59,6 @@
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
   const themeToggle:any = document.querySelector('.checkbox');
   const currentTheme = localStorage.getItem("theme");
 
@@ -81,7 +80,6 @@
   }
 
   themeToggle.addEventListener("change", switchTheme, false);
-  })
 </script>
 
 <script>

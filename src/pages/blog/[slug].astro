@@ -305,7 +305,6 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
     const headingElements = document.querySelectorAll('h2[id], h3[id], h4[id]');
     const tocLinks = document.querySelectorAll('.toc-link');
     const copyLink = document.querySelector(".copy-link")
@@ -338,5 +337,4 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     };
 
     copyLink.addEventListener('click', copyToClipboard)
-  })
 </script>
