@@ -83,6 +83,15 @@ const {
 
 		<meta name="generator" content={Astro.generator} />
 
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQFNFH6X5F"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-ZQFNFH6X5F');
+		</script>
+
 		<title>{title}</title>
 
 	</head>
