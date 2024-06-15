@@ -268,6 +268,28 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
     font-size: 1.3rem;
   }
 
+  blockquote {
+    background-color: var(--blockquote-bg);
+    padding: 0.1rem 1rem;
+    border-radius: var(--border-radius);
+    margin-left: 0;
+  }
+
+  blockquote::before {
+    content: "Note 📝"; 
+    font-size: 2rem;
+    position: relative;
+    left: .1rem;
+    bottom: -1rem;
+    transform: translateY(-50%);
+    font-weight: bolder;
+}
+
+  code {
+    background-color: var(--code-bg);
+    padding: 0.1rem;
+  }
+
   @media screen and (max-width: 1024px){
     .single-article-container {
       flex-direction: column;

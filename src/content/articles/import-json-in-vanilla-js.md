@@ -110,7 +110,7 @@ console.log(africaJson.countries);
 
 ![a-few-african-countries](../../../public/images/blogPostImages/import-json-vanilla-js/a-few-african-countries.png)
 
-> **Note**: If you don't specify the full path of the JSON file, the import will not work, and you will not see any error in the console. So, if you've done the import and it's not working, make sure you specify the full path of the JSON file.
+> If you don't specify the full path of the JSON file, the import will not work, and you will not see any error in the console. So, if you've done the import and it's not working, make sure you specify the full path of the JSON file.
 
 If you want to see other deeply nested attributes such as the `name`, `currency`, and `capital` of the countries, you need to do some looping with `forEach()` or `map()`:
 
@@ -142,7 +142,7 @@ countryCapitals.forEach((country) => {
 
 ![a-few-african-contries-nice](../../../public/images/blogPostImages/import-json-vanilla-js/a-few-african-contries-nice.png)
 
-> **Note**: You can use a new `with` statement instead of `assert` to import JSON in vanilla Javascript. It's still in stage 3 in the tc39 proposals, at the time of writing this article, so it's not fully implemented across browsers.
+> You can use a new `with` statement instead of `assert` to import JSON in vanilla Javascript. It's still in stage 3 in the tc39 proposals, at the time of writing this article, so it's not fully implemented across browsers.
 
 ## The Popular Alternative: How to Use the `Fetch API` to Import a JSON File in Vanilla JavaScript
 
