@@ -6,7 +6,7 @@ coverImage: '/images/blogPostCovers/json-vanilla-js.png'
 tags: ['JavaScript', 'WebDev']
 category: 'Frontend Development'
 readingTime: '3 minutes'
-excerpt: 'Yes. You can declare and reuse variables in CSS by reading this article.'
+excerpt: 'Learn how to import a JSON file in JavaScript, handle common errors, and explore a practical alternative.'
 slug: how-to-import-a-json-file-in-javaScript
 ---
 
