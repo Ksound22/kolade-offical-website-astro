@@ -1,6 +1,6 @@
 ---
 title: 'What is the Difference between a .js and .jsx File in React?'
-publishedDate: 2022-12-24
+publishedDate: 2023-05-23
 author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/jsx-vs-js.png'
 tags: ['React', 'WebDev']

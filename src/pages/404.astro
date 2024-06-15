@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
+import LatestArticles from "../components/LatestArticles.astro"
 
 import notFoundImage from  '../../public/images/404.png'
 ---
@@ -18,12 +19,15 @@ import notFoundImage from  '../../public/images/404.png'
   <Image
     src={notFoundImage}
     alt="404 Image"
-    width={0}
-    height={0}
-    sizes="100vw"
+    width={300}
+    height={190}
+    
     class="notfound-img"
   />
   <p class="notfound-text">Sorry, we could not find the page you were looking for.</p>
+
+  <h2>In the mean time, you can read my lastest articles:</h2>
+  <LatestArticles />
 
   <div class="link-container">
     <a class='back-home-btn' role="button" href='/'>Go Home</a>
@@ -44,9 +48,13 @@ import notFoundImage from  '../../public/images/404.png'
     margin-bottom: 3rem;
   }
 
+  h2 {
+    text-align: center;
+  }
+  
   .link-container {
     text-align: center;
-    margin-bottom: 6rem;
+    margin: 6rem 0;
   }
 
   .back-home-btn {

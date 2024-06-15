@@ -14,6 +14,7 @@ function formatDate(date: Date): string {
 function buildTOC(headings: any) {
   const toc = [];
   const parentHeadings = new Map();
+
   headings.forEach((h: any) => {
     const heading = { ...h, subheadings: [] };
     parentHeadings.set(heading.depth, heading);
@@ -24,6 +25,7 @@ function buildTOC(headings: any) {
       parentHeadings.get(heading.depth - 1).subheadings.push(heading);
     }
   });
+
   return toc;
 }
 
