@@ -29,6 +29,7 @@ interface Props {
         {article.data.title}
       </a>
     </h3>
+    <small>{article.data.excerpt}</small>
     <div class="tags-and-date">
       <div class="tags">
         {article.data.tags.map((tag:string, index:number) => (
@@ -125,6 +126,11 @@ interface Props {
   .date p {
     margin: 0;
     color: var(--text-color);
+  }
+
+  small {
+    display: block;
+    margin-bottom: 1rem;
   }
 
    @media screen and (max-width: 1024px) {
