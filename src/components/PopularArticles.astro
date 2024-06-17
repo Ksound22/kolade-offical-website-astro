@@ -1,0 +1,32 @@
+---
+import ArticleCard from "./ArticleCard.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getPopularArticles() {
+  const articles:  CollectionEntry<'articles'>[] = (await getCollection('articles')).sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+  return articles.filter(article => article.data.badge === 'Popular');
+}
+
+const popularArticles = await getPopularArticles()
+---
+
+<div class="popular-articles-card">
+  {popularArticles.map((article) => (
+    <ArticleCard article={article} />
+  ))}
+</div>
+
+<style>
+	.popular-articles-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.8rem;
+  }
+
+   @media screen and (max-width: 912px) {
+    .popular-article-card {
+      flex-direction: column;
+    }
+   }
+</style>

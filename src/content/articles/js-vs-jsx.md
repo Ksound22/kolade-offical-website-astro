@@ -5,7 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/jsx-vs-js.png'
 tags: ['React', 'WebDev']
 category: 'Frontend Development'
-badge: 'Pupular'
+badge: 'Popular'
 readingTime: '3 minutes'
 excerpt: "A JavaScript and JSX file are not exactly the same thing. There's one notable difference between them you can learn of in this article."
 slug: what-is-the-difference-between-a-js-and-jsx-file-in-react

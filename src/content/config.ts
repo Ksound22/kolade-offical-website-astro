@@ -8,6 +8,7 @@ const articleCollection = defineCollection({
     coverImage: z.string(),
     tags: z.array(z.string()),
     category: z.string(),
+    badge: z.string().optional(),
     excerpt: z.string(),
     slug: z.string(),
   }),

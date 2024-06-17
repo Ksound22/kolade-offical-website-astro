@@ -2,6 +2,7 @@
 import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
 import LatestArticles from "../components/LatestArticles.astro"
+import PopularArticles from "../components/PopularArticles.astro"
 
 import notFoundImage from  '../../public/images/404.png'
 ---
@@ -26,8 +27,9 @@ import notFoundImage from  '../../public/images/404.png'
   />
   <p class="notfound-text">Sorry, we could not find the page you were looking for.</p>
 
-  <h2>In the mean time, you can read my lastest articles:</h2>
-  <LatestArticles />
+  <h2>In the mean time, you can read my popular articles:</h2>
+  <!-- <LatestArticles /> -->
+  <PopularArticles />
 
   <div class="link-container">
     <a class='back-home-btn' role="button" href='/'>Go Home</a>
