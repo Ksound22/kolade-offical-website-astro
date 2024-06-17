@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/html-role-attribute.png'
 tags: ['HTML', 'WebDev']
 category: 'Frontend Development'
+badge: 'Popular'
 readingTime: '2 minutes'
 excerpt: 'The role attribute is an important aspect of accessibility. Reading more about it in this article.'
 slug: what-is-the-html-role-attribute

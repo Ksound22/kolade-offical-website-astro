@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/next-env-in-config-file.png'
 tags: ['Next JS', 'WebDev']
 category: 'Frontend Development'
+badge: 'NTP'
 readingTime: '1 minute'
 excerpt: 'You can put your environment variables in a next.config.js file'
 slug: how-to-create-environment-variables-inside-nextconfigjs-file-and-use-them

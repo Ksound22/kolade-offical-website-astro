@@ -5,6 +5,7 @@ author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/html-lang.png'
 tags: ['Next JS', 'WebDev']
 category: 'Frontend Development'
+badge: 'NTP'
 readingTime: '1 minute'
 excerpt: 'Add the lang attribute to the root of your Next JS website without creating a _document.js file'
 slug: how-to-add-the-lang-attribute-to-the-root-of-your-next-js-website-without-documentjs
