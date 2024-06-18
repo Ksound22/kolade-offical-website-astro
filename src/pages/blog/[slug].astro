@@ -37,6 +37,8 @@ const relatedArticles = randomisedArticles.filter(article => {
 }).slice(0, 3);
 
 const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
+
+const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
 ---
 
 <Layout
@@ -46,10 +48,10 @@ const currentURL = `https://www.koladechris.com${Astro.url.pathname}`;
   OGUrl={currentURL}
   OGTitle= {entry.data.title}
   OGDesc= {entry.data.excerpt}
-  OGImage={entry.data.coverImage}
+  OGImage={OGSMImage}
   xtitle= {entry.data.title}
   xDesc= {entry.data.excerpt}
-  xImg={entry.data.coverImage}
+  xImg={OGSMImage}
 >
 
   <div class="copied"></div>
