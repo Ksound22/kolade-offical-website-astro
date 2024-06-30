@@ -2,7 +2,7 @@
 const { heading } = Astro.props;
 ---
 
-<li>
+<!-- <li>
   <a href={`#${heading.slug}`} class="toc-link">
     {heading.text}
   </a>
@@ -15,6 +15,12 @@ const { heading } = Astro.props;
       </ul>
     )
   }
+</li> -->
+
+<li>
+  <a href={`#${heading.slug}`} class="toc-link">
+    {heading.text}
+  </a>
 </li>
 
 <style>
@@ -30,6 +36,11 @@ const { heading } = Astro.props;
     padding-top: 5px;
     font-size: 1.1rem;
     transition: var(--transition);
+  }
+
+  .toc-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
   }
 
   .toc-sublist {

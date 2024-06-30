@@ -11,6 +11,7 @@ function formatDate(date: Date): string {
   return new Date(date).toLocaleDateString(undefined, options);
 }
 
+/*
 function buildTOC(headings: any) {
   const toc = [];
   const parentHeadings = new Map();
@@ -23,6 +24,20 @@ function buildTOC(headings: any) {
       toc.push(heading);
     } else {
       parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+    }
+  });
+
+  return toc;
+}
+*/
+
+function buildTOC(headings: any) {
+  const toc = [];
+
+  headings.forEach((h: any) => {
+    if (h.depth === 2) {
+      const heading = { ...h, subheadings: [] };
+      toc.push(heading);
     }
   });
 
