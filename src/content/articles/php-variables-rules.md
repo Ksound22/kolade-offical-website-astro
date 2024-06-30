@@ -6,7 +6,7 @@ coverImage: '/images/blogPostCovers/php-variables-rules.png'
 tags: ['PHP', 'WebDev']
 category: 'Backend Development'
 badge: 'NTP'
-readingTime: '1 minute'
+readingTime: '3 minute'
 excerpt: 'Master the essential rules and best practices for naming variables in PHP to write clean and readable code.'
 slug: rules-and-conventions-for-naming-variables-in-php
 ---
