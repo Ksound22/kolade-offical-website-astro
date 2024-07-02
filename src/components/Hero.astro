@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets"
-import pp from '../../public/images/placeholder.png'
+import pp from '../../public/images/kolade-recent.JPG'
 ---
 
 <div class="container">
@@ -18,8 +18,8 @@ import pp from '../../public/images/placeholder.png'
     <Image
       src={pp}
       alt="Kolade Chris"
-      height={0}
-      width={0}
+      width={380}
+      height={400}
       sizes="100vw"
     />
   </div>
@@ -47,7 +47,8 @@ import pp from '../../public/images/placeholder.png'
   }
 
   .hero-img img {
-    border: 2px solid var(--primary-color);
+    border: 4px inset var(--primary-color);
+    border-radius: var(--border-radius);
   }
 
   .work {
