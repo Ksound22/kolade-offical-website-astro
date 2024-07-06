@@ -6,7 +6,7 @@ coverImage: '/images/blogPostCovers/next-server-components-data-fetching.png'
 tags: ['Next.js', 'WebDev']
 category: 'Frontend Development'
 badge: 'NTP'
-readingTime: '5 minutes'
+readingTime: '4 minutes'
 excerpt: 'Fetch data in React server components with Next.js for improved performance and SEO optimization'
 slug: next-js-data-fetching-how-to-fetch-data-in-a-react-server-component
 ---
