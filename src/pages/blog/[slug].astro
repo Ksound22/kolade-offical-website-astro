@@ -318,11 +318,6 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
     aside {
       display: none;
     }
-
-     /* img {
- 	  	max-width: 100%;
-      height: auto;
-	  } */
   }
 
   @media screen and (max-width: 820px) {
@@ -334,11 +329,6 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
       font-size: 1.7rem;
     }
 
-    /* img {
- 	  	max-width: 100%;
-      height: auto;
-	  } */
-
     blockquote {
       width: 90%;
     }
@@ -346,27 +336,33 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
 </style>
 
 <script>
-    const headingElements = document.querySelectorAll('h2[id], h3[id], h4[id]');
+    const subHeadingElements = document.querySelectorAll('h2');
     const tocLinks = document.querySelectorAll('.toc-link');
     const copyLink = document.querySelector(".copy-link")
     const copiedText = document.querySelector(".copied")
 
-    function handleScroll() {
-      const scrollPosition = window.scrollY + (window.innerHeight / 2);
+    const observerOptions = {
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
 
-      headingElements.forEach((heading, index) => {
-        const headingTop = heading.getBoundingClientRect().top + window.scrollY;
-        const isActive = scrollPosition >= headingTop;
-
-        if (isActive) {
-          tocLinks.forEach((link) => link.classList.remove('active'));
-          tocLinks[index].classList.add('active');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          
+          const id = entry.target.getAttribute('id');
+          const correspondingLink = document.querySelector(`.toc-link[href="#${id}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+          }
         }
       });
-    }
+    }, observerOptions);
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    subHeadingElements.forEach(heading => {
+      observer.observe(heading);
+    });
 
     const copyToClipboard = () => {
       navigator.clipboard.writeText(window.location.toString());
