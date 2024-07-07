@@ -3,7 +3,7 @@ title: 'How to Create Environment Variables Inside next.config.js File and Use t
 publishedDate: 2022-12-24
 author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/next-env-in-config-file.png'
-tags: ['Next JS', 'WebDev']
+tags: ['Next.js', 'WebDev']
 category: 'Frontend Development'
 badge: 'NTP'
 readingTime: '1 minute'
