@@ -8,7 +8,7 @@ category: 'Backend Development'
 badge: 'NTP'
 readingTime: '8 minute'
 excerpt: 'Master the essential rules and best practices for naming variables in PHP to write clean and readable code.'
-slug: how-to-create-a-string-and-use-string-unctions
+slug: how-to-create-a-string-and-use-string-functions
 ---
 
 String is one of the fundamental data types in PHP and other programming languages. It is used extensively in web development for representing textual data.
