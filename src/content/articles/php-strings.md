@@ -7,7 +7,7 @@ tags: ['PHP', 'WebDev']
 category: 'Backend Development'
 badge: 'NTP'
 readingTime: '8 minute'
-excerpt: 'Master the essential rules and best practices for naming variables in PHP to write clean and readable code.'
+excerpt: 'Master PHP string manipulation with essential rules, creation methods, concatenation techniques, and powerful built-in functions'
 slug: how-to-create-a-string-and-use-string-functions
 ---
 
