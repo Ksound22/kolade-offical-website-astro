@@ -628,7 +628,9 @@ images: {
  },
 ```
 
-Now you should see the animals rendered in the browser:
+Now you should see the animals rendered in the browser: ![Animals View](https://res.cloudinary.com/dwfn0m1mx/image/upload/v1721504445/animals-data-view_xmjkrb.gif)
+
+You can grab the full code in [the project GitHub repo](https://github.com/Ksound22/next-mongodb-integration-article).
 
 ## Wrapping Up
 
