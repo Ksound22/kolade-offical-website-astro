@@ -6,7 +6,7 @@ coverImage: '/images/blogPostCovers/next-cloudinary.png'
 tags: ['Cloudinary', 'Next.js']
 category: 'Frontend Development'
 badge: 'NTP'
-readingTime: '8 minute'
+readingTime: '7 minute'
 excerpt: 'Learn to streamline image uploads and management in Next.js projects using Cloudinary for optimized media handling.'
 slug: how-to-integrate-cloudinary-with-your-nextjs-project
 ---

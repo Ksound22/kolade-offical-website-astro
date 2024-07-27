@@ -125,6 +125,14 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
       </div>
     </aside>
   </div>
+
+  <p>Join my free weekly newsletter so you don't miss out on more articles like this.</p>
+  <div class="subscribe-form">
+    <iframe src="https://embeds.beehiiv.com/bc926598-839b-48e4-9c32-fc46b5255050?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+  </div>
+
+  <p>What I'm up to, my latest articles, cool Youtube videos, and more... <br>
+  delivered to your inbox every Sunday.</p>
 </Layout>
 
 <style>
@@ -198,6 +206,10 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
   aside h2 {
     color: var(--accent-color);
     margin-bottom: 0.5rem;
+  }
+
+   iframe {
+    width: 35rem;
   }
 
   @media screen and (max-width: 820px) {
@@ -285,10 +297,6 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
     color: var(--primary-color);
   }
 
-  .share-p {
-    font-size: 1.3rem;
-  }
-
   blockquote {
     background-color: var(--blockquote-bg);
     padding: 0.1rem 1rem;
@@ -316,8 +324,12 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
     margin-top: 1rem;
   }
 
-  .is-terminal {
-    margin-bottom: 12rem;
+  .share-p {
+    margin-bottom: -1rem;
+  }
+
+  .copy-link {
+    margin-top: .8rem;
   }
 
   @media screen and (max-width: 1024px){
