@@ -1,9 +1,9 @@
 ---
 title: 'Next Cloudinary – How to Integrate Cloudinary with Your Next.js Project'
-publishedDate: 2024-07-20
+publishedDate: 2024-27-20
 author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/next-cloudinary.png'
-tags: ['MongoDB', 'Next.js', React]
+tags: ['Cloudinary', 'Next.js']
 category: 'Frontend Development'
 badge: 'NTP'
 readingTime: '8 minute'
