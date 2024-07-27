@@ -7,7 +7,7 @@ tags: ['Cloudinary', 'Next.js']
 category: 'Frontend Development'
 badge: 'NTP'
 readingTime: '8 minute'
-excerpt: 'Learn how to set up MongoDB with Next.js using Mongoose for dynamic, cloud-based web applications'
+excerpt: 'Learn to streamline image uploads and management in Next.js projects using Cloudinary for optimized media handling.'
 slug: how-to-integrate-cloudinary-with-your-nextjs-project
 ---
 
