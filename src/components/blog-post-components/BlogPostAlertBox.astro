@@ -1,0 +1,41 @@
+---
+
+const { icon, type, title, backgroundColor, borderLeftColor } = Astro.props
+---
+
+<aside
+  class="alert-box"
+  style={{backgroundColor, borderLeftColor}}
+  >
+  <div class="alert-icon-and-tip">{icon}&nbsp;&nbsp;{type}</div>
+  <div class="alert-title">{title}</div>
+  <div class="alert-content">
+   <slot />
+  </div>
+</aside>
+
+<style>
+  .alert-box {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-left-width: 4px;
+    border-left-style: solid;
+    margin-bottom: 1rem;
+  }
+
+  .alert-icon-and-tip {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .alert-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+  }
+
+  .alert-content {
+    font-size: 1.2rem;
+  }
+</style>
