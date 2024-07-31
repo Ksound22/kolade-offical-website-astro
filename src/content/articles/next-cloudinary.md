@@ -1,6 +1,6 @@
 ---
 title: 'Next Cloudinary – How to Integrate Cloudinary with Your Next.js Project'
-publishedDate: 2024-27-20
+publishedDate: 2024-07-20
 author: 'Kolade Chris'
 coverImage: '/images/blogPostCovers/next-cloudinary.png'
 tags: ['Cloudinary', 'Next.js']
