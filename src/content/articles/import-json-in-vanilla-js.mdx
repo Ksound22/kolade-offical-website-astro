@@ -12,7 +12,9 @@ slug: how-to-import-a-json-file-in-javaScript
 ---
 
 import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
-import BlogPostAlertBox from '../../components/blog-post-components/BlogPostAlertBox.astro';
+import NoteAlertBox from '../../components/blog-post-components/NoteAlertBox.astro';
+import TipAlertBox from '../../components/blog-post-components/TipAlertBox.astro';
+import CautionAlertBox from '../../components/blog-post-components/CautionAlertBox.astro';
 
 JSON provides a lightweight and easy-to-parse data format for JavaScript projects. JavaScript's native support for JSON enables efficient data handling and storage, making it easy to use in your codebases.
 
@@ -64,16 +66,11 @@ Then inside the JavaScript file, import the JSON file using the `import` and `fr
 import JSONFileName from 'location/file.json' assert { type: 'json' };
 ```
 
-<BlogPostAlertBox
-  icon='<ion-icon style="color: #eebd53" size="large" name="warning"></ion-icon>'
-  type="Caution"
-  backgroundColor="#4e4022"
-  borderLeftColor="#eebd53"
->
+<CautionAlertBox>
   You must specify the full path of the JSON file even if it's in the same
   directory as the JavaScript file. That means you should at least have
   `./somefile.json`
-</BlogPostAlertBox>
+</CautionAlertBox>
 
 In the case of the code I'm using, I have prepared a small JSON file showing a few African countries, their capitals, and currencies:
 
@@ -125,16 +122,11 @@ console.log(africaJson.countries);
 
 ![a-few-african-countries](../../../public/images/blogPostImages/import-json-vanilla-js/a-few-african-countries.png)
 
-<BlogPostAlertBox
-  icon='<ion-icon style="color: #3347ff;" size="large" name="information-circle"></ion-icon>'
-  type="Note"
-  backgroundColor="#171d4f"
-  borderLeftColor="#3347ff"
->
+<NoteAlertBox>
   If you don't specify the full path of the JSON file, the import will not work,
   and you will not see any error in the console. So, if you've done the import
   and it's not working, make sure you specify the full path of the JSON file.
-</BlogPostAlertBox>
+</NoteAlertBox>
 
 If you want to see other deeply nested attributes such as the `name`, `currency`, and `capital` of the countries, you need to do some looping with `forEach()` or `map()`:
 
@@ -166,16 +158,11 @@ countryCapitals.forEach((country) => {
 
 ![a-few-african-contries-nice](../../../public/images/blogPostImages/import-json-vanilla-js/a-few-african-contries-nice.png)
 
-<BlogPostAlertBox
-  icon='<ion-icon style="color: #bd53ee;" size="large" name="rocket"></ion-icon>'
-  type="Tip"
-  backgroundColor="#40224e"
-  borderLeftColor="#bd53ee"
->
+<TipAlertBox>
   You can use a new `with` statement instead of `assert` to import JSON in
   vanilla Javascript. It's still in stage 3 in the tc39 proposals at the time of
   writing this article, so it's not fully implemented across browsers.
-</BlogPostAlertBox>
+</TipAlertBox>
 
 ## The Popular Alternative: How to Use the `Fetch API` to Import a JSON File in Vanilla JavaScript
 

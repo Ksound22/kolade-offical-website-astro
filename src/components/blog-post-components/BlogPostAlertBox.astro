@@ -15,7 +15,7 @@ function renderIcon(icon:any) {
   class="alert-box"
   style={{backgroundColor, borderLeftColor}}
   >
-  <div class="alert-icon-and-tip">
+  <div class="alert-icon-and-type">
     <Fragment set:html={renderIcon(icon)} />
     &nbsp;
     {type}
@@ -37,7 +37,7 @@ function renderIcon(icon:any) {
     border-bottom-right-radius: var(--border-radius);
   }
 
-  .alert-icon-and-tip {
+  .alert-icon-and-type {
     font-size: 1.5rem;
     display: flex;
     align-items: end;
