@@ -11,6 +11,8 @@ excerpt: 'Learn how to set up MongoDB with Next.js using Mongoose for dynamic, c
 slug: how-to-integrate-mongodb-into-your-nextjs-applications
 ---
 
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
 Integrating MongoDB with a Next.js application is a powerful way to create dynamic, data-driven websites and applications.
 
 This article will guide you through the process of setting up MongoDB (using Mongoose as the ORM) to interact with your database. We'll use MongoDB Atlas to store our data on the cloud, then display the data in a Next.js application using the app router.
@@ -514,6 +516,8 @@ export default async function Home() {
   return <main>{/*page content*/}</main>;
 }
 ```
+
+<NewsletterFrameInPost />
 
 ## Display the Data (Animals)
 

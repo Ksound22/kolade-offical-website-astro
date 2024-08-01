@@ -11,6 +11,8 @@ excerpt: 'Yes. You can declare and reuse variables in CSS by reading this articl
 slug: the-css-var-function-how-to-create-and-use-css-variables
 ---
 
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
 CSS variables, AKA CSS custom properties came into existence due to the need to have a consistent and maintainable CSS stylesheet. Instead of repeatedly defining the same style declaration over and over again, why not define it once, use it in multiple style declarations, and change it all in one place?
 
 That's the big void CSS variable has been able to fill – help you achieve the **DRY (do not repeat yourself) principle**.
@@ -52,6 +54,8 @@ To create a CSS variable globally, you can use the `:root` pseudo-selector or th
 ```
 
 Once you declare a CSS variable like this, you can use it anywhere in your stylesheet. In a framework like Next JS, you can declare several CSS variables in the `global.css` file and use it in every other stylesheet. Amazing!
+
+<NewsletterFrameInPost />
 
 ## How to Declare a CSS Variable Locally
 

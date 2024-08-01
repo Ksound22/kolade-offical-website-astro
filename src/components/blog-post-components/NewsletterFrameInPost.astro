@@ -2,8 +2,11 @@
 
 ---
 <div class="container">
+
+  <h3 class="newsletter-h3">Join the my Free Newsletter</h3>
+
   <p>
-    Join the my free newsletter <br> for coding tips, videos from reputable sources, articles from OG tech authors, and a ton of other goodies.
+      Subscribe to my newsletter for coding tips, videos from reputable sources, articles from OG tech authors, and a ton of other goodies.
   </p>
 
   <div class="subscribe-form">
@@ -18,25 +21,25 @@
 
 <style>
   .container {
-    background-color: var(--navbar-and-footer-bg);
-    padding: 0.2rem;
+    background-color: var(--post-newsletter-bg);
+    padding: 0.2rem 1rem;
     border-radius: var(--border-radius);
+    margin-top: 3rem;
   }
 
   iframe {
-    width: 35rem;
+    width: 30rem;
   }
 
   p {
-    text-align: center;
     font-size: var(--paragraph-font);
     line-height: var(--line-height);
     margin-bottom: 2rem;
   }
 
-  .subscribe-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+ @media screen and (max-width: 820px) {
+    iframe {
+      width: 24rem;
+    }
+   }
 </style>

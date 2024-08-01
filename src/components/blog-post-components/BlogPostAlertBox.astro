@@ -1,14 +1,25 @@
 ---
+const { icon, type, backgroundColor, borderLeftColor } = Astro.props
 
-const { icon, type, title, backgroundColor, borderLeftColor } = Astro.props
+function renderIcon(icon:any) {
+  if (typeof icon === 'string') {
+    return icon;
+  } else if (typeof icon === 'object' && icon.name) {
+    return `<ion-icon name="${icon.name}"></ion-icon>`;
+  }
+  return '';
+}
 ---
 
 <aside
   class="alert-box"
   style={{backgroundColor, borderLeftColor}}
   >
-  <div class="alert-icon-and-tip">{icon}&nbsp;&nbsp;{type}</div>
-  <div class="alert-title">{title}</div>
+  <div class="alert-icon-and-tip">
+    <Fragment set:html={renderIcon(icon)} />
+    &nbsp;
+    {type}
+  </div>
   <div class="alert-content">
    <slot />
   </div>
@@ -21,18 +32,15 @@ const { icon, type, title, backgroundColor, borderLeftColor } = Astro.props
     padding: 1rem;
     border-left-width: 4px;
     border-left-style: solid;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
   }
 
   .alert-icon-and-tip {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .alert-title {
-    font-weight: bold;
-    font-size: 1.5em;
-    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: end;
   }
 
   .alert-content {

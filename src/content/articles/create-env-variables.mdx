@@ -11,6 +11,8 @@ excerpt: 'You can put your environment variables in a next.config.js file'
 slug: how-to-create-environment-variables-inside-nextconfigjs-file-and-use-them
 ---
 
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
 Environment variables let you store secrets you don’t want to expose for security reasons. So, they are useful in concealing private information such as API keys and other secrets.
 
 The normal way many developers create environment variables is to create a `.env` file and put the variable identifiers and values there:
@@ -47,6 +49,8 @@ const nextConfig = {
   // env variables end
 };
 ```
+
+<NewsletterFrameInPost />
 
 ## How to Use Environment Variables of a `next.config.js` File
 
