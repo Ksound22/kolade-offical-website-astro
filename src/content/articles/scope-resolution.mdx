@@ -1,0 +1,135 @@
+---
+title: 'What is Double Colon in PHP? PHP Scope Resolution Operator Explained'
+publishedDate: 2024-08-03
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/php-scope-resolution.png'
+tags: ['PHP', 'WebDev']
+category: 'Backend Development'
+badge: 'NTP'
+readingTime: '2 minute'
+excerpt: 'Unwrap the capabilities of PHP scope resolution operator, Paamayim Nekudotayim, for directly accessing static methods, properties, and constants in classes.'
+slug: php-scope-resolution-operator-explained
+---
+
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
+The double colon (`::`) is the scope resolution operator in PHP. It is also known as **Paamayim Nekudotayim**, which means **double colon** in Hebrew.
+
+The scope resolution operator is used to **access static methods, static properties, and constants of a class without creating an instance of that class**. It allows you to access these elements directly from the class itself, rather than from an object instance.
+
+## How to Access Static Methods with the Scope Resolution Operator
+
+To use the scope resolution operator to access static methods, attach the double colon to the class name, then call the static method like a regular function:
+
+```php
+ClassName::methodName()
+```
+
+The example below accesses the `numberOfLegs` method from the `Animal` class without instantiating it:
+
+```php
+class Animal
+{
+ public static function numberOfLegs($animal)
+ {
+   switch ($animal) {
+     case 'dog':
+     case 'cat':
+       return 4;
+       break;
+     case 'bird':
+       return 2;
+       break;
+     default:
+       return 'Unknown';
+   }
+ }
+}
+
+// Accessing the static method directly without creating an instance
+echo "A dog has " . Animal::numberOfLegs('dog') . " legs.<br>";
+// Output: A dog has 4 legs.
+echo "A bird has " . Animal::numberOfLegs('bird') . " legs.<br>";
+// Output: A bird has 2 legs.
+echo "A fish has " . Animal::numberOfLegs('fish') . " legs.<br>";
+// Output: A fish has Unknown legs.
+```
+
+If you want to instantiate the class before accessing the `numberOfLegs` method, this is how you would have done it:
+
+```php ins={15-26}
+class Animal {
+ public static function numberOfLegs($animal) {
+  switch ($animal) {
+      case 'dog':
+      case 'cat':
+          return 4;
+      case 'bird':
+          return 2;
+      default:
+          return 'Unknown';
+  }
+ }
+}
+
+// Instantiate the Animal class
+$animalInstance = new Animal();
+
+// Access the static method using the object instance
+echo "A dog has " . $animalInstance->numberOfLegs('dog') . " legs.<br>";
+// Output: A dog has 4 legs.
+
+echo "A bird has " . $animalInstance->numberOfLegs('bird') . " legs.<br>";
+// Output: A bird has 2 legs.
+
+echo "A fish has " . $animalInstance->numberOfLegs('fish') . " legs.<br>";
+// Output: A fish has Unknown legs.
+```
+
+<NewsletterFrameInPost />
+
+## How to Access Static Properties with the Scope Resolution Operator
+
+Accessing static properties with the scope resolution is done the same way you access static methods with it.
+
+That means you need to attach the double colon to the class name, and then the property name. The only thing you need to do differently is to attach the dollar sign to the property name:
+
+```php
+ClassName::$propertyName
+```
+
+In the example below, I accessed the `$numberOfLegs` static property without instantiating the `Animal2` class:
+
+```php
+class Animal2
+{
+ public static $numberOfLegs = 4;
+}
+
+echo "The number of legs for a tetrapoda animal is " . Animal2::$numberOfLegs;
+// Output: The number of legs for a tetrapoda animal is 4
+```
+
+## How to Access Constants with the Scope Resolution Operator
+
+To access constants from a class with the scope resolution operator, you do it like below:
+
+```php
+ClassName::CONSTANT_NAME
+```
+
+Here's an example:
+
+```php
+class Animal3
+{
+ const LEGS = 4;
+}
+
+echo "The number of legs of a tetrapoda animal is " . Animal3::LEGS;
+// Output: The number of legs of a tetrapoda animal is 4
+```
+
+## Wrapping Up
+
+The scope resolution operator (`::`) does not just allow access to static properties, static methods, and constants within a class without the need to instantiate the class. It provides a convenient way to interact with class-level elements directly, simplifying code and improving efficiency in the process.
