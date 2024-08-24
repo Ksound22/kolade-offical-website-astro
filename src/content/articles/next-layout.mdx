@@ -1,0 +1,170 @@
+---
+title: 'Next JS Layout Example – How to Add a Layout to your Next JS Website'
+publishedDate: 2024-08-24
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/next-layout.png'
+tags: ['Next.js', 'WebDev']
+category: 'Frontend Development'
+badge: 'NTP'
+readingTime: '5 minute'
+excerpt: 'Master the technique of adding a unified layout across your Next.js website, featuring consistent headers, footers, and navigation.'
+slug: how-to-add-a-layout-to-your-next.js-website
+---
+
+import NoteAlertBox from '../../components/blog-post-components/NoteAlertBox.astro';
+import CautionAlertBox from '../../components/blog-post-components/CautionAlertBox.astro';
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
+In Next.js, a layout file (AKA Next.js root layout) lets you have components that are common to all pages in one file. This could be headers, footers, and navigation menus. You then need to wrap the layout around all the pages of the website.
+
+So, adding a layout to your React or Next.js website is a great way to give your website a uniform look across different pages.
+
+In this article, you'll learn how to add a layout to your Next.js website. We will be using the latest Next.js version, but you can apply the same approach to older versions. Also, it doesn't look like the approach will change so much in the coming versions.
+
+## What you'll Build
+
+This is the preview of what you'll build in this article:
+
+![Next Layout](https://res.cloudinary.com/dwfn0m1mx/image/upload/v1723903445/what-we-build_ubgid1.gif)
+
+As you can see, the parts of the website that are common to all pages did not change. This is the navbar and the footer.
+
+<NoteAlertBox>
+  If you want to learn about how the links in the navbar are highlighted when
+  the corresponding page is visited, read my article on [how to highlight the
+  current page link in Next.js
+  14+](/blog/how-to-highlight-the-active-link-in-next.js).
+</NoteAlertBox>
+
+## How to Add a Layout to your Next.js Website
+
+### Step 1: Create a new Next.js project with the command below:
+
+```bash
+npx create-next-app@latest # if you're using NPM
+yarn create next-app # if you're using Yarn
+pnpm create next-app # if you're using PNPM
+```
+
+The installer will take you through some prompts to select some options.
+**Make sure you select the app router**. That's because this article will show
+you how to add a layout to your website using the Next.js app router.
+
+### Step 2: Create a `layout.jsx` or `layout.tsx` file if you're using Typescript inside the `app` directory.
+
+<CautionAlertBox>
+  You get access to the `layout.jsx` file after a fresh Next.js installation.
+  But if you deleted the file, then you need to recreate it.
+</CautionAlertBox>
+
+### Step 3: Create a `MainLayout` functional component that takes in a `children` prop and export it:
+
+```js
+const MainLayout = ({ children }) => {
+  return <div>MainLayout</div>;
+};
+
+export default MainLayout;
+```
+
+<NoteAlertBox>
+  If you get a typing error for the `children` prop, type it as `{ children: React.ReactNode }`.
+</NoteAlertBox>
+
+### Step 4: Import the components you want to have on all pages, like `Navbar` and `Footer:`
+
+```js ins={1-3}
+import '@/assets/styles/globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+const MainLayout = ({ children }) => {
+  return <div>MainLayout</div>;
+};
+
+export default MainLayout;
+```
+
+### Step 5: Create the boilerplate tags you need, like `html`, `<body>`, `<main>` and pass the `children` prop into the `<main>` tag:
+
+```js ins={6-8, 10, 11-12}
+import '@/assets/styles/globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <html>
+      <body>
+        <main>{children}</main>
+      </body>
+    </html>
+  );
+};
+
+export default MainLayout;
+```
+
+### Step 6: Use the `Navbar` and `Footer` components in the return statement:
+
+```js ins={9,11}
+import '@/assets/styles/globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <html>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+};
+
+export default MainLayout;
+```
+
+You can also add meta tags to all the pages the layout will have access to by exporting a metadata object this way:
+
+```js ins={5-9}
+import '@/assets/styles/globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+export const metadata = {
+  title: 'Green World | Home of Nature Scenes',
+  description: 'Find the coolest nature images and videos',
+  keywords: 'nature animals trees fields',
+};
+
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <html>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+};
+
+export default MainLayout;
+```
+
+That's all you need to create a layout in Next.js and make it work! To better understand things, you can grab the code for this article from [the project GitHub repo](https://github.com/Ksound22/next-active-link-next-layout-demo).
+
+## Wrapping Up
+
+Are you wondering why you don't need to import the `layout.jsx` file into each page and wrap it around the content in it to make the layout work?
+
+THat happens because Next.js looks out for the `layout.jsx` or `layout.tsx` file in any directory and automatically wraps it around the content of each page for you.
+
+In the case of this article, the layout is located in the `app` directory:
+
+If you want the layout of a particular page to be different, you can override the root layout inside the `app` directory by creating a `layout.jsx` or `layout.tsx` file inside the folder of that page.
+
+Also, if you need multiple layouts, you can add a `getlayout` property to your page, so you can return a React component for the layout. Read more about that in the Next.js docs.
