@@ -11,6 +11,8 @@ excerpt: "One conversion Python won't allow you to do is to convert a string str
 slug: valueerror-invalid-literal-for-int-with-base-10-in-python-fixed
 ---
 
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
 In Python, you can convert one data type to another. For instance, integers to strings and vice versa, floats to strings, and many others.
 
 However, one conversion Python won't allow you to do is to convert a string structured as a floating point number (a number with a decimal point) to an integer. For example, converting "5.20" to an integer. This results in the **ValueError: invalid literal for int() with base 10:** error.
@@ -102,4 +104,4 @@ print(res)
 # 128
 ```
 
-If you find the article helpful, share it with your friends on social media.
+<NewsletterFrameInPost />
