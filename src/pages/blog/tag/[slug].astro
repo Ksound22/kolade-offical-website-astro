@@ -30,7 +30,7 @@ const allArticles = await fetchAllArticles();
 const randomisedArticles = allArticles.sort(() => Math.random() - Math.random())
 const tagArticles = randomisedArticles.filter(article => 
   article.data.tags.some(tag => formatTagsAndCats(tag) === slug)
-).slice(0, 6);
+);
 ---
   
 <Layout

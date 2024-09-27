@@ -75,7 +75,12 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
   </div>
 
   <h1>{entry.data.title}</h1>
-  <img
+ 
+  
+  <div class="single-article-container">
+    <div class="article-details">
+
+        <img
     src={entry.data.coverImage}
     alt={entry.data.title}
     class="cover-photo"
@@ -96,10 +101,8 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
         </a>
       </span>
     ))} | {entry.data.readingTime} Read
-  </p>  
-  
-  <div class="single-article-container">
-    <div class="article-details">
+  </p> 
+
       <Content />
 
       <p class="share-p">Share this article by copying the link:</p>
@@ -158,6 +161,7 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
     flex: 1;
     padding-left: 30px;
     overflow-y: auto;
+    border-left: 2px solid rgb(61, 61, 61);
   }
 
   .toc-and-related h2 {
@@ -286,8 +290,6 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
 
   .toc-link.active {
     font-weight: bold;
-    border-left: 2px solid var(--primary-color);
-    padding-left: .3rem;
     color: var(--primary-color);
   }
 

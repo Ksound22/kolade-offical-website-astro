@@ -27,7 +27,7 @@ if(category === undefined) {
 
 const allArticles = await fetchAllArticles();
 const randomisedArticles = allArticles.sort(() => Math.random() - Math.random())
-const categoryArticles = randomisedArticles.filter(article => formatTagsAndCats(article.data.category) === slug).slice(0, 6);
+const categoryArticles = randomisedArticles.filter(article => formatTagsAndCats(article.data.category) === slug)
 ---
 
 <Layout
