@@ -1,17 +1,16 @@
 ---
 ---
 
-<div>
-  <input type="checkbox" class="checkbox" id="checkbox" />
+<div role="tab">
+  <input type="checkbox" class="checkbox" id="checkbox" aria-label="Toggle theme" />
   <label for="checkbox" class="checkbox-label">
-    <ion-icon name="sunny" class="sun"></ion-icon>
-    <ion-icon name="moon" class="moon"></ion-icon>
-    <span class="ball"></span>
+    <ion-icon name="sunny" class="sun" aria-hidden="true"></ion-icon>
+    <ion-icon name="moon" class="moon" aria-hidden="true"></ion-icon>
+    <span class="ball" aria-hidden="true"></span>
   </label>
 </div>
 
 <style>
-
   .moon {
     color: var(--primary-color);
     width: 22px;

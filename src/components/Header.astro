@@ -18,7 +18,7 @@ import { Image } from 'astro:assets';
   </a>
  
   <ul class="navigation" role="tablist">
-    <li class="navigation-item">
+    <li class="navigation-item" role="tab">
       <a
         href="/newsletter"
         class={pathname === "/newsletter" ? "active" : ""}
@@ -27,7 +27,7 @@ import { Image } from 'astro:assets';
       </a>
     </li>
 
-    <li class="navigation-item">
+    <li class="navigation-item" role="tab">
       <a
         href="/about"
         class={pathname === "/about" ? "active" : ""}
@@ -35,7 +35,7 @@ import { Image } from 'astro:assets';
         About
       </a>
     </li>
-    <li class="navigation-item">
+    <li class="navigation-item" role="tab">
       <a
         href="/blog"
         class={pathname === "/blog" ? "active" : ""}
@@ -43,7 +43,7 @@ import { Image } from 'astro:assets';
         Blog
       </a>
     </li>
-    <li class="navigation-item">
+    <li class="navigation-item" role="tab">
       <a
         href="/services"
         class={pathname === "/services" ? "active" : ""}
@@ -51,7 +51,7 @@ import { Image } from 'astro:assets';
         Services
       </a>
     </li>
-    <li class="navigation-item">
+    <li class="navigation-item" role="tab">
       <a
         href="/contact"
         class={pathname === "/contact" ? "active" : ""}
@@ -62,9 +62,9 @@ import { Image } from 'astro:assets';
     
     <Theme />
   </ul>
-  <button class="burger-menu" id="burger-menu">
-    <ion-icon name="menu-outline" class="bars"></ion-icon>
-    <ion-icon name="close-outline" class="x" ></ion-icon>
+  <button role="button" class="burger-menu" id="burger-menu">
+    <ion-icon name="menu-outline" class="bars" role="img"></ion-icon>
+    <ion-icon name="close-outline" class="x" role="img" ></ion-icon>
   </button>
 </nav>
 
