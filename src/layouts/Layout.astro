@@ -1,6 +1,4 @@
 ---
-import { AstroFont } from 'astro-font';
-
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -68,16 +66,8 @@ const {
 		<link rel="app-touch-icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
 
-		<AstroFont config={[{
-			src: [],
-			name: "Roboto",
-			preload: false,
-			display: "swap",
-			selector: "body",
-			fallback: "sans-serif",
-			googleFontsURL: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900',
-		}]}
-		/>
+	
+		
 
 		<meta name='google-site-verification' content={import.meta.env.GOOGLE_SITE_VERIFICATION}  />
 
@@ -108,6 +98,8 @@ const {
 </html>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900');
+	
 	* {
 		margin: 0;
 		padding: 0;
@@ -182,6 +174,7 @@ const {
 	body {
 		background-color: var(--bg);
 		color: var(--text-color);
+		font-family: 'Roboto', sans-serif;
 	}
 
 	.main-page-content {
