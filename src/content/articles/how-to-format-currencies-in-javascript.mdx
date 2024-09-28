@@ -1,0 +1,164 @@
+---
+title: 'JavaScript Format Number as Currency – How to Format Currencies in JavaScript'
+publishedDate: 2024-09-28
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/format-currencies-in-javascript.png'
+tags: ['JavaScript', 'WebDev']
+category: 'Frontend Development'
+badge: 'NTP'
+readingTime: '5 minutes'
+excerpt: 'You can display currencies without manually attaching currency symbols to numbers in JavaScript'
+slug: how-to-format-currencies-in-javascript
+---
+
+import NewsletterFrameInPost from '../../components/blog-post-components/NewsletterFrameInPost.astro';
+
+While working on an eCommerce website using JavaScript, financial reports, or dealing with product data from an API, you'll need to format certain numbers or strings as currencies or convert them to currencies.
+
+You've come to the right place if you're looking into how to format numbers as currency strings in JavaScript.
+
+In this article, I'll show you the manual approach first, then proceed to show you how to do it with the  `JavaScript Internationalization API (Intl Constructor)`.
+
+## The Manual Approach: A Generic Function that Takes a Number or String and Converts it to Currency
+
+You could create a function that takes a number or string and converts it to your target currency:
+
+```js
+const formatCurrency = (amount) => {
+ amount = parseFloat(amount);
+
+ if (isNaN(amount)) {
+   return 'Invalid amount';
+ }
+
+ let formattedAmount = amount.toFixed(2).toString().split('.');
+
+ formattedAmount[0] = formattedAmount[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+ return '$' + formattedAmount.join('.');
+};
+
+console.log(formatCurrency('902.4')); // $902.40
+console.log(formatCurrency(82.65)); // $82.65
+```
+
+This approach is not sustainable because it handles one currency.
+
+What if you want to handle many other currencies? Well, you can modify the function to accept a currency symbol:
+
+```js
+const formatCurrency = (amount, currencySymbol) => {
+ amount = parseFloat(amount);
+
+ if (isNaN(amount)) {
+   return 'Invalid amount';
+ }
+
+ let formattedAmount = amount.toFixed(2).toString().split('.');
+
+ formattedAmount[0] = formattedAmount[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+ return currencySymbol + formattedAmount.join('.');
+};
+
+console.log(formatCurrency('902.4', '₦')); //₦902.40
+console.log(formatCurrency(82.65, '€')); // €82.65
+```
+
+This approach is still not sustainable because it requires custom logic for different locales and currencies, making it complex and error-prone. 
+
+There's a solution, though. That solution is the **`Intl.NumberFormat` object of the JavaScript Internationalization API**.
+
+Pardon the interruption...
+
+<NewsletterFrameInPost />
+
+Now unto how to format currencies with the `Intl.NumberFormat` object...
+
+## How to Format Numbers as Currency with the `Intl.NumberFormat()` Constructor
+
+Using the `Intl.NumberFormat()` constructor to format numbers as currency is an improvement over manual methods. It streamlines the process by automatically applying locale-specific rules. It also offers built-in support for various currencies.
+
+You can create an instance of the `Intl.NumberFormat` with the new keyword or without it:
+
+```js
+new Intl.NumberFormat(); // works fine
+Intl.NumberFormat(); // works fine
+```
+
+You can also assign it to a variable:
+
+```js
+const formatCurrency = Intl.NumberFormat();
+```
+
+The `Intl.NumberFormat()` constructor takes two parameters – `locale` and `options`. It uses the `.format()` method to do the actual number formatting.
+
+Both parameters are optional, so you can use the `Intl.NumberFormat()` constructor directly. This way, it'll only add commas to the numbers to indicate it in either thousand, million, or more:
+
+```js
+const formatThousand = Intl.NumberFormat().format(98932);
+console.log(formatThousand); // 98,932
+
+const formatMillion = Intl.NumberFormat().format(48921043);
+console.log(formatMillion); // 48,921,043
+```
+
+If you decide to use only the locale parameter, the number will be formatted as done in that location. Here's what that looks like for Nigeria, Italy, and UK:
+
+```js
+const amount = 369741564;
+
+// Formatting for Nigeria
+console.log(new Intl.NumberFormat('en-NG').format(amount)); // 369,741,564
+
+// Formatting for Italy
+console.log(new Intl.NumberFormat('it-EU').format(amount)); // 369.741.564
+
+// Formatting for the United Kingdom
+console.log(new Intl.NumberFormat('en-GB').format(amount)); // 369,741,564
+```
+
+If you finally use the `options` parameter with `style` set to `'currency'` and `currency` set to the currency in that locale, the number will be formatted as currency:
+
+```js
+const amount = 369741564;
+
+// Formatting currency for Nigeria
+console.log(
+ new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(
+   amount
+ )
+); // ₦369,741,564.00
+
+// Formatting currency for Italy
+console.log(
+ new Intl.NumberFormat('it-EU', { style: 'currency', currency: 'EUR' }).format(
+   amount
+ )
+); // 369.741.564,00 €
+
+// Formatting currency for the United Kingdom
+console.log(
+ new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(
+   amount
+ )
+); // £369,741,564.00
+```
+
+Finally, you can create a reusable function to format numbers as currency by taking advantage of the `Intl.NumberFormat()` constructor:
+
+```js
+const formatCurrency = (amount, locale = 'en-US', currency = 'USD') => {
+ return new Intl.NumberFormat(locale, {
+   style: 'currency',
+   currency: currency,
+ }).format(amount);
+};
+
+console.log(formatCurrency(369741564, 'en-NG', 'NGN')); // ₦369,741,564.00
+console.log(formatCurrency(369741564, 'it-EU', 'EUR')); // 369.741.564,00 €
+console.log(formatCurrency(369741564, 'en-GB', 'GBP')); // £369,741,564.00
+```
+
+Thank you for reading!
