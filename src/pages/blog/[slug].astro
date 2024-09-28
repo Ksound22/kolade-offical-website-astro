@@ -76,32 +76,29 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
 
   <h1>{entry.data.title}</h1>
  
-  
   <div class="single-article-container">
     <div class="article-details">
+      <img
+        src={entry.data.coverImage}
+        alt={entry.data.title}
+        class="cover-photo"
+        width="1200"
+        height="600"
+      />
 
-        <img
-    src={entry.data.coverImage}
-    alt={entry.data.title}
-    class="cover-photo"
-    width="1200"
-    height="600"
-  />
-
-  <p class="stats">Written by {entry.data.author} | { formatDate(entry.data.publishedDate)} |
-  
-    {entry.data.tags.map((tag:string, index:number) => (
-      <span>
-        <a
-          class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}
-          href={`/blog/tag/${formatTagsAndCats(tag)}`}
-          class="tag"
-          >
-          #{tag}
-        </a>
-      </span>
-    ))} | {entry.data.readingTime} Read
-  </p> 
+      <p class="stats">Written by {entry.data.author} | { formatDate(entry.data.publishedDate)} |
+        {entry.data.tags.map((tag:string, index:number) => (
+          <span>
+            <a
+              class={index % 2 === 0 ? 'even-tag' : 'odd-tag'}
+              href={`/blog/tag/${formatTagsAndCats(tag)}`}
+              class="tag"
+              >
+              #{tag}
+            </a>
+          </span>
+        ))} | {entry.data.readingTime} Read
+      </p> 
 
       <Content />
 
@@ -113,7 +110,6 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
     </div>
 
     <aside class="toc-and-related">
-      
       <nav class="toc">
         <h2>Table of Content</h2>
         <ul>
@@ -166,6 +162,7 @@ const OGSMImage = `https://www.koladechris.com${entry.data.coverImage}`
 
   .toc-and-related h2 {
     font-size: 1.8rem;
+    /* margin-top: 2rem; */
     margin-bottom: -1.5rem;
   }
 
