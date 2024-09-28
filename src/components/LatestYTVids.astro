@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwkj9jcrMZCcbcIa6nF5LNQ&maxResults=3&order=date&key=${import.meta.env.GOOGLE_API_KEY}`)
+const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwkj9jcrMZCcbcIa6nF5LNQ&maxResults=4&order=date&key=${import.meta.env.GOOGLE_API_KEY}`)
 
 const { items } = await res.json();
 ---
@@ -36,7 +36,7 @@ const { items } = await res.json();
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3.5rem;
+    gap: 2rem;
   }
 
   .video-item {
@@ -45,7 +45,6 @@ const { items } = await res.json();
     align-items: center;
     width: 320px; 
     background-color: var(--card-bg);
-    padding: 1.4rem;
     border-radius: 4px;
   }
 
@@ -67,6 +66,10 @@ const { items } = await res.json();
   @media screen and (max-width: 768px) {
     .videos {
       gap: 0.2rem;
+    }
+
+    .video-item {
+      padding-top: 1.5rem;
     }
   }
 </style>
