@@ -1,0 +1,173 @@
+---
+title: 'PHP Number Format Currency – How to Format Currencies in PHP'
+publishedDate: 2024-10-05
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/php-format-currency.png'
+tags: ['PHP']
+category: 'Backend Development'
+badge: 'NTP'
+readingTime: '5 minutes'
+excerpt: 'PHP has a way you can display currencies without manually attaching currency symbols to numbers'
+slug: how-to-format-currencies-in-php
+---
+
+In eCommerce applications, financial reports, and other apps where currencies are integral, formatting strings or numbers as currency could be a regular task.
+
+You can do this yourself and go through the stress of adapting the apps to several currencies, or take advantage of the built-in methods PHP offers for the same task.
+
+In this article, you'll learn how to manually format currencies and use the built-in PHP way of doing it more conveniently.
+
+## The Manual Approach: How to Format Currency in PHP with a Variable or Custom Function
+
+You can use the `number_format()` function as a quick workaround:
+
+```php
+$amount = 349023;
+$formatMoney = number_format($amount, 2, '.', ',');
+$currencySymbol = '$';
+
+echo $currencySymbol . $formatMoney; // $349,023.00
+```
+
+For reusability, you could create a function that takes a number or string and converts it to a certain currency:
+
+```php
+function formatCurrency($amount)
+{
+ if (!is_numeric($amount)) {
+   return 'Invalid amount entered!';
+ }
+
+ $amount = floatval($amount);
+
+ $formattedAmount = number_format($amount, 2, '.', '');
+
+ $parts = explode('.', $formattedAmount);
+
+ $parts[0] = number_format($parts[0]);
+
+ return '$' . implode('.', $parts);
+}
+
+echo formatCurrency('902.4'); // $902.40
+echo "<br>";
+echo formatCurrency(82.65); // $82.65
+echo "<br>";
+echo formatCurrency('ifdsa'); // Invalid amount entered!
+```
+
+The problem with this approach is that it handles one currency only.
+
+To fix that, you can go ahead and make it accept a certain currency symbol with an extra parameter:
+
+```php
+function formatCurrency($amount, $currencySymbol)
+{
+ if (!is_numeric($amount)) {
+   return 'Invalid amount entered!';
+ }
+
+ $amount = floatval($amount);
+
+ $formattedAmount = number_format($amount, 2, '.', '');
+
+ $parts = explode('.', $formattedAmount);
+
+ $parts[0] = number_format($parts[0]);
+
+ return $currencySymbol . implode('.', $parts);
+}
+
+echo formatCurrency('902.4', '$'); // $902.40
+echo "<br>";
+echo formatCurrency(82.65, '₦'); // ₦82.65
+echo "<br>";
+echo formatCurrency('ifdsa', '$'); // Invalid amount entered!
+```
+
+The problem with this manual approach is that it lacks locale-specific support and dynamic currency symbols, even though the `number_format()` function accurately formats numbers.
+
+The approach may also introduce precision issues and complexity with functions like `explode` and `implode`. In addition, handling invalid input can be cumbersome, and hardcoding currency symbols limit flexibility.
+
+The solution is the `NumberFormatter` class from the `Intl` extension. Let's look at how to use it.
+
+## How to Format Currencies with the PHP `NumberFormatter` Class
+
+Using the `NumberFormatter` class from the `Intl` extension to format currency is an upgrade over many manual solutions.
+
+Here's why:
+
+- it helps you adapt the formatting to the conventions of different locales, such as decimal points and thousand separators
+- it handles various currency symbols automatically based on the currency code you specify
+- it lets you avoid precision issues that might happen with the use of `floatVal()`
+- it has cleaner code
+
+Here are the steps to follow so you can use the `NumberFormatter` class:
+
+- set the locale and the amount:
+
+```php
+$dollarLocale = 'en_US';
+$dollarAmount = 45237.89;
+```
+
+- create the `NumberFormatter` instance that takes in the `locale` and the kind of formatting you want, in this case, currency :
+
+```php
+$dollarFormatter = new NumberFormatter($dollarLocale, NumberFormatter::CURRENCY);
+```
+
+- call the `formatCurrency()` method on the instance. It takes the amount and currency code as parameters:
+
+```php
+$formattedDollar = $dollarFormatter->formatCurrency($dollarAmount, 'USD');
+```
+
+Here's the full code:
+
+```php
+$dollarLocale = 'en_US';
+$dollarAmount = 45237.89;
+
+$dollarFormatter = new NumberFormatter($dollarLocale, NumberFormatter::CURRENCY);
+$formattedDollar = $dollarFormatter->formatCurrency($dollarAmount, 'USD');
+
+echo $formattedDollar; // $45,237.89
+```
+
+And here's another example that formats the Naira:
+
+```php
+$nairaLocale = 'en_NG';
+$nairaAmount = 45237.89;
+
+$nairaFormatter = new NumberFormatter($nairaLocale, NumberFormatter::CURRENCY);
+$formattedNaira = $nairaFormatter->formatCurrency($nairaAmount, 'NGN');
+
+echo $formattedNaira; // ₦45,237.89
+```
+
+You can make the whole process a reusable code by creating a function that takes an `amount`, `currency`, and `locale` as arguments:
+
+```php
+function formatCurrency($amount, $currency = 'USD', $locale = 'en_US')
+{
+ if (!is_numeric($amount)) {
+   return 'Invalid amount entered!';
+ }
+
+ $formatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
+
+ return $formatter->formatCurrency(floatval($amount), $currency);
+}
+
+echo formatCurrency('902.4', 'USD'); // $902.40
+echo "<br>";
+echo formatCurrency(8232.65, 'NGN', 'en_NG'); // ₦8,232.65
+echo "<br>";
+echo formatCurrency(5892309.93, 'EUR', 'it_IT'); // 5.892.309,93 €
+echo "<br>";
+echo formatCurrency('ifdsa', 'USD'); // Invalid amount entered!
+```
+
+Thank you for reading!
