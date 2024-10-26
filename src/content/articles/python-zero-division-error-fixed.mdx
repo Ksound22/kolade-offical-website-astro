@@ -1,0 +1,83 @@
+---
+title: 'Python ZeroDivisionError: division by zero [Fixed]'
+publishedDate: 2024-10-26
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/python-zero-division.png'
+tags: ['Python']
+category: 'Programming'
+badge: 'NTP'
+readingTime: '2 minutes'
+excerpt: 'You can display currencies without manually attaching currency symbols to numbers in JavaScript'
+slug: python-zerodivisionerror-fixed
+---
+
+When working with numbers in Python, you might need to divide one number by another. It's a common task but can quickly become tricky if you aren't careful about what you're dividing by.
+
+The main culprit? `ZeroDivisionError` exception, or error (if you prefer it that way).
+
+Let's look at the cause of the `ZeroDivision` exception in Python and how to fix it.
+
+## What Causes the `ZeroDivisionError` Error in Python?
+
+`ZeroDivision` error happens when you attempt to divide a number by `0`:
+
+```py
+print( 5 / 0) # ZeroDivisionError: division by zero
+```
+
+This happens because in math, dividing by zero is undefined. TO account for that, Python throws the `ZeroDivisionError` exception when you try to devide a number by 0.
+
+Here's a better example with a function:
+
+```py
+def divideTwoNums(x, y):
+  return x / y
+
+print(divideTwoNums(6, 2)) # 3.0
+print(divideTwoNums(4, 0)) # ZeroDivisionError: division by zero
+```
+
+## How to Fix the `ZeroDivision` Error in Python
+
+Fixing this error means you should make sure a number is not divided by `0`. But since you might be accepting user inputs in your apps, it's possible errors like `ZeroDivision` will happen.
+
+To avoid `ZeroDivisionError` error, you can use an `if` statement to check for it and display a custom message to the user:
+
+```py
+def divideTwoNums(x, y):
+ if y == 0:
+   return "You can't divide a number by zero!"
+ else:
+   return x / y
+
+print(divideTwoNums(6, 2)) # 3.0
+print(divideTwoNums(6, 0)) # You can't divide a number by zero!
+```
+
+The Python way to handle to prevent the `ZeroDivisionError` error is to use `try…except` instead of `if…else`:
+
+```py
+def divideTwoNums(x, y):
+ try:
+   return x / y
+ except:
+   return "You can't divide a number by zero!"
+
+print(divideTwoNums(6, 2)) # 3.0
+print(divideTwoNums(6, 0)) # You can't divide a number by zero!
+```
+
+You can take that further by specifically looking for the `ZeroDivisionError` exception:
+
+```py
+def divideTwoNums(x, y):
+ try:
+   return x / y
+ except ZeroDivisionError:
+   return "You can't divide a number by zero!"
+
+print(divideTwoNums(6, 2)) # 3.0
+print(divideTwoNums(6, 0)) # You can't divide a number by zero!
+```
+
+Thank you for reading!
