@@ -1,0 +1,70 @@
+---
+title: "Python Error: Cannot Convert 'int' Object to str Implicitly [Fixed]"
+publishedDate: 2024-11-09
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/python-cannot-convert-int-object-to-str.png'
+tags: ['Python']
+category: 'Programming'
+badge: 'NTP'
+readingTime: '2 minutes'
+excerpt: 'Learn how to explicitly convert integers to strings to avoid type conversion errors.'
+slug: cannot-convert-int-object-to-str
+---
+
+In Python, the error, `cannot convert int object to str implicitly` occurs when you try to concatenate a number (usually an integer) with a string without explicitly converting the integer to a string first.
+
+Here's an example:
+
+```py
+name = "John Doe"
+age = 24
+
+message = "My name is " + name + " and  I am " + age + " years old"
+print(message)
+```
+
+Running this code would lead to the error, because you have to explicitly convert `age` to a string before Python will be able to print it out for you.
+
+Other forms in which the error can show up are `TypeError: can only concatenate str (not "int") to str` and `TypeError: can only concatenate str (not "float") to str` if the number is a float.
+
+If you're looking for a way to fix this error, you've come to the right place.
+
+## How to Fix the Cannot Convert 'int' Object to str Implicitly Error
+
+To fix the error, make sure the integer is converted to a string. For that, you can use the following:
+
+- `str()` function
+- f string
+- the good old formatting with percentage (`%`) sign
+
+Here's how you can fix the `cannot convert int object to str implicitly` error with the `str()` function:
+
+```py
+name = "John Doe"
+age = 24
+
+message = "My name is " + name + " and  I am " + str(age) + " years old"
+print(message) # My name is John Doe and  I am 24 years old
+```
+
+Here's how you can fix the error with `f` string:
+
+```py
+name = "John Doe"
+age = 24
+
+message = f"My name is {name} and  I am {age} years old"
+print(message) # My name is John Doe and  I am 24 years old
+```
+
+And here's how you can fix it with the good old percent formatting style:
+
+```py
+name = "John Doe"
+age = 24
+
+message = "My name is %s and I am %d years old" % (name, age)
+print(message)  # My name is John Doe and I am 24 years old
+```
+
+I Hope this article helps you fix the error. If you still have an questions, you can send me a DM on Twitter (now X).
