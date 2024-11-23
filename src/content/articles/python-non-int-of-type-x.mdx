@@ -1,0 +1,100 @@
+---
+title: "TypeError: can't multiply sequence by non-int of type 'list' [Fixed]"
+publishedDate: 2024-11-23
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/python-cant-multiply-sequence–by–non-int-of-type-list.png'
+tags: ['Python']
+category: 'Programming'
+badge: 'Popular'
+readingTime: '2 minutes'
+excerpt: 'Learn how to fix the TypeError that occurs from multiplying sequences like lists or strings only by integers'
+slug: typeerror-cant-multiply-sequence-by-non-int-of-type-list-fixed
+---
+
+One common error you might encounter while working with Python is `TypeError: can't multiply sequence by non-int of type 'list'`.
+
+This error message might initially seem complicated, but it’s straightforward once you understand what Python expects when performing multiplication with sequences.
+
+Continue reading, so I can show you what causes this error and how you can resolve it.
+
+## What Causes `TypeError: can't multiply sequence by non-int of type 'list'`?
+
+The error, `TypeError: can't multiply sequence by non-int of type 'list'` occurs when you try to multiply a sequence (such as a list or a string) by something that is not an integer.
+
+That's because, in Python, sequences like lists, tuples, and strings can only be multiplied by integers. Multiplying a sequence by an integer repeats that sequence multiple times. Here's an example:
+
+```py
+my_list = [1, 2, 3]
+result = my_list * 2
+
+
+print(result) # [1, 2, 3, 1, 2, 3]
+```
+
+However, if you try to multiply a sequence by a list, Python will raise a `TypeError` exception because it doesn’t know how to handle this operation.
+
+Here’s a common situation where this error occurs:
+
+```py
+my_list = [1, 2, 3, 4, 5, 6]
+result = my_list * [3]
+
+
+print(result) # TypeError: can't multiply sequence by non-int of type 'list'
+```
+
+The error can also occur with tuples:
+
+```py
+my_tuple = (1, 2, 3)
+result = my_tuple * [3]
+
+
+print(result) # TypeError: can't multiply sequence by non-int of type 'list'
+```
+
+Or with strings:
+
+```py
+my_str = "How are you?"
+result = my_str * [3]
+
+
+print(result) # TypeError: can't multiply sequence by non-int of type 'list'
+```
+
+## How to Fix `TypeError: can't multiply sequence by non-int of type 'list'`
+
+To fix this error, make sure you are multiplying sequences by integers only.
+
+Here’s how you can correct it if you're working with a list:
+
+```py
+my_list = [1, 2, 3, 4, 5, 6]
+result = my_list * 3
+
+
+print(result) # [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]
+```
+
+Here's how you can fix it if you're working with tuples:
+
+```py
+my_tuple = (1, 2, 3)
+result = my_tuple * 3
+
+
+print(result) # (1, 2, 3, 1, 2, 3, 1, 2, 3)
+```
+
+And here's how you can fix it while working with strings:
+
+```py
+my_str = "How are you?"
+result = my_str * 3
+
+
+print(result) # How are you?How are you?How are you?
+```
+
+Thank you for reading!
