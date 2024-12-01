@@ -1,0 +1,131 @@
+---
+title: 'What are the Differences between Array and Set in JavaScript?'
+publishedDate: 2024-12-01
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/array-vs-set.png'
+tags: ['JavaScript']
+category: 'Frontend Development'
+badge: 'NTP'
+readingTime: '5 minutes'
+excerpt: 'Everything you need to know to start using the JavaScript intersection observer API in your projects.'
+slug: what-are-the-differences-between-array-and-set-in-javascript
+---
+
+In JavaScript, array and set are both data structures used to associate data.
+
+While both might seem similar at first glance, they serve distinct purposes and behave differently.
+
+Arrays are more versatile, allowing duplicates and offering indexed access, while sets focus on uniqueness and efficient lookups.
+
+Let's explore the key differences between arrays and sets so you can have a clear picture of when and why to use each.
+
+## Ability to Store Duplicate Values
+
+An Array lets you store duplicates but a set does not. This makes arrays more suitable when you need values to be repeated.
+
+In the example below, the "Chimp" entry happens to be a duplicate. It was accepted by the array but ignored by the set:
+
+```js
+const myAnimalsArr = ['Elephant', 'Chimp', 'Fowl', 'Chimp', 'Goat', 'Lion'];
+console.log(myAnimalsArr); // (6) ['Elephant', 'Chimp', 'Fowl', 'Chimp', 'Goat', 'Lion']
+
+const myAnimalsSet = new Set([
+  'Elephant',
+  'Chimp',
+  'Fowl',
+  'Chimp',
+  'Goat',
+  'Lion',
+]);
+console.log(myAnimalsSet); // Set(5) {'Elephant', 'Chimp', 'Fowl', 'Goat', 'Lion'}
+```
+
+## Accessing Elements by Position
+
+An Array allows direct indexing by position, but a set does not. If you want to access an item in a set by positioning, you have to convert it to an array.
+In the array below, you can access any of the elements by specify its index:
+
+```js
+const myAnimalsArr = ['Elephant', 'Chimp', 'Fowl', 'Chimp', 'Goat', 'Lion'];
+console.log(myAnimalsArr[3]); // Chimp
+```
+
+To do the same with a set, spread the data inside square braces and attach the index to it:
+
+```js
+const myAnimalsSet = new Set([
+  'Elephant',
+  'Chimp',
+  'Fowl',
+  'Chimp',
+  'Goat',
+  'Lion',
+]);
+console.log([...myAnimalsSet][3]); // Goat
+```
+
+## Built-in Methods for Manipulation
+
+JavaScript has unique built-in methods for manipulating both arrays and sets.
+
+An Array has a ton of these methods, with many more being added after almost every JavaScript update release. They include `push()`, `pop()`, `map()`, `filter()`, and more.
+With set, you get access to methods like `add()`, `delete()`, `has()`, and `clear()`.
+
+## How to Convert Between Array and Set
+
+In many situations, you might need to convert an array to a set and set to an array.
+For instance, if you want to remove a duplicate from an array, then you would need to convert it to a set:
+
+```js
+const myAnimalsArr = [
+  'Elephant',
+  'Chimp',
+  'Fowl',
+  'Chimp',
+  'Goat',
+  'Lion',
+  'Fowl',
+];
+console.log(myAnimalsArr);
+// (7) ['Elephant', 'Chimp', 'Fowl', 'Chimp', 'Goat', 'Lion', 'Fowl']
+
+const removeDuplicatesFromAnimalsArray = new Set([...myAnimalsArr]);
+console.log(removeDuplicatesFromAnimalsArray);
+// Set(5) {'Elephant', 'Chimp', 'Fowl', 'Goat', 'Lion'}
+```
+
+A good case for converting a set to an array is direct indexing and having more methods available for manipulation:
+
+```js
+const myAnimalsSet = new Set([
+  'Elephant',
+  'Chimp',
+  'Fowl',
+  'Chimp',
+  'Goat',
+  'Lion',
+]);
+
+convertAnimalsSetToArray = [...myAnimalsSet];
+console.log(convertAnimalsSetToArray);
+// (5) ['Elephant', 'Chimp', 'Fowl', 'Goat', 'Lion']
+// now you can use direct indexing and array methods
+```
+
+## Summary
+
+As you've seen, arrays and sets are both essential tools for working with data, but they shine in different scenarios.
+
+Use arrays when you need order and duplicates, and choose sets for unique values and faster lookups.
+
+For a better lookup of the differences between an array and a set, here's a tabulation with more differences added:
+
+| **Basis**                | **Array**                                                                         | **Set**                                                                  |
+| ------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **Duplicates**           | Allows duplicates.                                                                | Does not allow duplicates                                                |
+| **Indexing by Position** | Supports direct indexing. For example, `arr[1]`.                                  | Does not support positional indexing                                     |
+| **Methods**              | Offers a wide range of methods like `push()`, `map()`, `filter()`, and many more. | Provides fewer methods like `add()`, `delete()`, `has()`, and `clear()`. |
+| **Performance**          | Slower for lookups and duplicate checks, especially for large arrays.             | Optimized for faster lookups using a hash table.                         |
+| **Order Preservation**   | Preserves the insertion order of elements.                                        | Preserves the insertion order but removes duplicates.                    |
+| **Conversion**           | Convert to a set using `new Set(array)`.                                          | Convert to an array using `[...set]`.                                    |
+| **Use Cases**            | Use for ordered lists or when duplicates are needed.                              | Use for unique values and quick existence checks.                        |
