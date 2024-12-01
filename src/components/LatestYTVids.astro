@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwkj9jcrMZCcbcIa6nF5LNQ&maxResults=4&order=date&key=${import.meta.env.GOOGLE_API_KEY}`)
+const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwkj9jcrMZCcbcIa6nF5LNQ&maxResults=3&order=date&key=${import.meta.env.GOOGLE_API_KEY}`)
 
 const { items } = await res.json();
 ---
@@ -12,8 +12,8 @@ const { items } = await res.json();
         <h3 class="vid-title">{video.snippet.title.substring(0, 33)}...</h3>
         <Image
           src={video.snippet.thumbnails.medium.url}
-          width={320}
-          height={180}
+          width={410}
+          height={280}
           alt={video.snippet.title}
         />
         <a 
@@ -36,7 +36,7 @@ const { items } = await res.json();
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 10rem;
   }
 
   .video-item {
@@ -54,7 +54,7 @@ const { items } = await res.json();
 
   .watch-btn {
     text-align: center;
-    width: 90%;
+    width: 100%;
     margin-top: 10px;
     padding: 5px 15px;
     background-color: var(--primary-color);
