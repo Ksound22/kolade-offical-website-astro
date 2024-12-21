@@ -1,0 +1,165 @@
+---
+title: 'How to Fix Python KeyError'
+publishedDate: 2024-12-21
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/python-key-error.png'
+tags: ['Error', 'Python']
+category: 'Programming'
+badge: 'NTP'
+readingTime: '2 minutes'
+excerpt: "Learn how to fix a KeyError, the error that occurs when accessing a dictionary key that doesn't exist or isn't properly formatted"
+slug: how-to-fix-python-key-error
+---
+
+A `KeyError` occurs in Python when you try to access a key in a dictionary that doesn't exist. Sometimes, the key exists but the error is still raised.
+
+If you're getting this error and are looking for a fix, you've come to the right place, because I'll show you the causes of the error and fix for each of those causes.
+
+So, let's talk about the causes of the error first.
+
+## What Causes `KeyError` in Python
+
+The causes of the error include but not limited to:
+
+- leading or trailing spaces attached to keys
+- there's a typo in the key
+- wrong access of the data type of the key
+- key exists in nested dictionaries
+- subtle errors with non-printable characters like `\n` and `\t`
+
+## How to Fix `KeyError` in Python
+
+Let's examine the fix for each cause of the `KeyError` mentioned above.
+
+- If you have trailing spaces or a typo, the error will be raised:
+
+```py
+my_dict = {'name': 'John', 'age': 24}
+
+print(my_dict['Name'])  # KeyError: 'Name'
+print(my_dict[' name '])  # KeyError: ' name '
+```
+
+Remove that trailing space and fix the typo and everythin will be fine:
+
+```py
+my_dict = {'name': 'John', 'age': 24}
+
+print(my_dict['name'])  # John
+print(my_dict['name'])  # John
+```
+
+- If you mix up the data of a key, due to some confusion or something else, Python will throw the `KeyError`:
+
+```py
+my_dict = {4: 'four', 1: 'one', 5: 'five', 2: 'two'}
+print(my_dict['1']) # KeyError: '1'
+```
+
+In the case above, the key `1` is an integer, not a string.
+
+To fix it, you either access the key as it's exact integer data type or cast it to an integer with the `int()` function if you want to wrap quotes around it for consistency in key assessment:
+
+```py
+my_dict = {4: 'four', 1: 'one', 5: 'five', 2: 'two'}
+
+
+print(my_dict[int('1')]) # one
+print(my_dict[1]) # one
+```
+
+- If you're dealing with nested keys and values, but you try to access a key on the surface, Python will throw the `KeyError` at you:
+
+```py
+my_nested_dict = {
+ 'outer': {
+   'name': 'John',
+   'age': 30
+ }
+}
+
+print(my_nested_dict['name']) # KeyError: 'name'
+```
+
+To access the key correctly, you have to have nested standard assess too:
+
+```py
+my_nested_dict = {
+ 'outer': {
+   'name': 'John',
+   'age': 30
+ }
+}
+
+print(my_nested_dict['outer']['name']) # John
+```
+
+If it happens you have more deeply nested keys and values, you can use the `get` method:
+
+```py
+my_nested_dict = {
+ 'outer': {
+   'name': 'John',
+   'age': 30,
+   'address': {
+     'city': 'New York',
+     'zipcode': '10001'
+   },
+   'hobbies': ['reading', 'travelling']
+ }
+}
+
+name = my_nested_dict.get('outer', {}).get('name', 'Name not found')
+zipcode = my_nested_dict.get('outer', {}).get('address', {}).get('zipcode', 'Zipcode not found')
+
+print(name) # John
+print(zipcode) # 10001
+```
+
+- To fix or prevent the `KeyError` while workign with external data that might have non-printable characters like `\n` and `\t`, you can use the `get()` method along with the `strip()` method to assess the key:
+
+```py
+print(data.get(key.strip(), 'Key not found'))
+```
+
+## How to Fix the `KeyError` while Working with JSON
+
+If you're working with a JSON data and the `KeyError` occurs, the fixes already discussed apply too, since you normally have to load JSON data into a dictionary to work with it.
+
+```py
+import json
+
+
+json_data = '''
+{
+ "company": {
+   "employees": [
+     {
+       "name": "Alice",
+       "position": "Developer"
+     },
+     {
+       "name": "Bob",
+       "position": "Manager",
+       "details": {
+         "age": 40,
+         "city": "New York"
+       }
+     }
+   ]
+ }
+}
+'''
+
+# Load the JSON data into a Python dictionary
+company_data = json.loads(json_data)
+
+# Safely access deeply nested data using get()
+bob_city = company_data.get('company', {}).get('employees', [])[1].get('details', {}).get('city', 'City not found')
+bob_age = company_data.get('company', {}).get('employees', [])[1].get('details', {}).get('age', 'City not found')
+alice_age = company_data.get('company', {}).get('employees', [])[0].get('details', {}).get('age', 'Age not found')
+
+print(bob_city)   # New York
+print(bob_age)   # 40
+print(alice_age)  # Age not found (since details doesn't exist for Alice)
+```
