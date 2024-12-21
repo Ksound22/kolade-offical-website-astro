@@ -12,8 +12,8 @@ const { items } = await res.json();
         <h3 class="vid-title">{video.snippet.title.substring(0, 33)}...</h3>
         <Image
           src={video.snippet.thumbnails.medium.url}
-          width={410}
-          height={280}
+          width={390}
+          height={250}
           alt={video.snippet.title}
         />
         <a 
@@ -43,7 +43,7 @@ const { items } = await res.json();
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 320px; 
+    max-width: 19rem; 
     background-color: var(--card-bg);
     border-radius: 4px;
   }
@@ -63,13 +63,20 @@ const { items } = await res.json();
     border-radius: var(--border-radius);
   }
 
+
   @media screen and (max-width: 768px) {
     .videos {
       gap: 0.2rem;
+      /* flex-direction: column; */
+      width: 100%;
     }
 
     .video-item {
       padding-top: 1.5rem;
+    }
+
+    .video-item img {
+      width: 350px;
     }
   }
 </style>

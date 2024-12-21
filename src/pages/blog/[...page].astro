@@ -29,7 +29,7 @@ const { page }: { page: Page<CollectionEntry<'articles'>> } = Astro.props;
   xDesc="Your go-to blog for software development, technical writing, and technical copywriting insights"
 >
   <section>
-      <h1>All Articles</h1>
+    <h1>All Articles</h1>
     <div class="article-cards">
       {page.data.map((article) => (
         <ArticleCard article={article} />
