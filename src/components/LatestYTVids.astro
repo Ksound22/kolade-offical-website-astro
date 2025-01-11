@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+
 const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCwkj9jcrMZCcbcIa6nF5LNQ&maxResults=3&order=date&key=${import.meta.env.GOOGLE_API_KEY}`)
 
 const { items } = await res.json();
