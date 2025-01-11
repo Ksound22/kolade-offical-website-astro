@@ -4,11 +4,18 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 export async function getPopularArticles() {
-  const articles:  CollectionEntry<'articles'>[] = (await getCollection('articles')).sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+  const articles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
+    .filter(article => article.data.publishedDate) // Ensure publishedDate exists
+    .sort((a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) => {
+      const dateA = new Date(a.data.publishedDate).valueOf();
+      const dateB = new Date(b.data.publishedDate).valueOf();
+      return dateB - dateA;
+    });
+
   return articles.filter(article => article.data.badge === 'Popular');
 }
 
-const popularArticles = await getPopularArticles()
+const popularArticles = await getPopularArticles();
 ---
 
 <div class="popular-articles-card">

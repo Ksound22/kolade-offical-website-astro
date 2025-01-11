@@ -3,8 +3,11 @@ import { fetchAllArticles } from "../../utils"
 
 const allArticles = await fetchAllArticles()
 
-const categories = allArticles.flatMap((article) => article.data.category)
-const uniqueCategories = [...new Set(categories)]
+const categories = allArticles
+  .flatMap((article) => article.data.category || []) 
+  .filter((category) => typeof category === "string"); 
+
+const uniqueCategories = [...new Set(categories)];
 
 const currentYear = new Date().getFullYear()
 ---

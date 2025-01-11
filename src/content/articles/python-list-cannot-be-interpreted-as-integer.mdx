@@ -1,0 +1,104 @@
+---
+title: 'Python TypeError List Object Cannot be Interpreted as an Integer [Fixed]'
+publishedDate: 2025-01-11
+author: 'Kolade Chris'
+coverImage: '/images/blogPostCovers/python-typerror-fix.png'
+tags: ['Error', 'Python']
+category: 'Programming'
+badge: 'NTP'
+readingTime: '2 minutes'
+excerpt: "Learn why Python raises 'TypeError: list object cannot be interpreted as an integer,' and discover practical fixes for common scenarios like range() and enumerate()."
+slug: python-typeerror-list-object-cannot-be-interpreted-as-an-integer
+---
+
+In Python, using a list directly in a built-in function that expects an integer input will result in the error `TypeError: 'list' object cannot be interpreted as an integer.
+
+Let's look at a few causes of the error and how you can fix each of them.
+
+## What Causes the List Object Cannot be Interpreted as an Integer Error?
+
+A good example of what causes the error is using a list in the `range()` function:
+
+```py
+my_list = [1, 2, 3]
+
+for i in range(my_list):
+ print(i) # TypeError: 'list' object cannot be interpreted as an integer
+```
+
+If you also use a list as the step parameter of the `range()` function, the error will be triggered:
+
+```py
+step = [2]
+
+for i in range(0, 10, step):
+   print(i) # TypeError: 'list' object cannot be interpreted as an integer
+```
+
+Another built-in function that expects an integer is `round()`. SO, using a list in it will trigger the same error:
+
+```py
+value = 3.14159
+decimal_places = [2]
+
+rounded_value = round(value, decimal_places)# TypeError: 'list' object cannot be interpreted as an integer
+```
+
+`enumerate` is another function that expects an integer as its optional `start` parameter. If you go ahead and use a list for that, you'll get the error:
+
+```py
+items = ['apple', 'orange', 'grape']
+start = [1]
+
+for index, item in enumerate(items, start=start):
+ print(index, item) # TypeError: 'list' object cannot be interpreted as an integer
+```
+
+## How to Fix the List Object Cannot be Interpreted as an Integer Error
+
+If you're working with the `range()` function and its causing the `TypeError: 'list' object cannot be interpreted as an integer` error, use the length of the list instead by wrapping it in the `len()` function:
+
+```py
+my_list = [1, 2, 3]
+
+for i in range(len(my_list)):
+ print(i) # 0 1 2 (in their respective lines)
+```
+
+Using `len()` on the list will return the length of the list, which is a valid integer.
+
+Since three items are in the `my_list` list above, that integer would be `3`, hence the `0 1 2` result.
+
+If using the `enumerate()` in a code causes the error, find a way to make sure the start parameter is accepting an integer, not a list.
+
+This is incorrect:
+
+```py
+items = ['apple', 'orange', 'grape']
+start = [1]
+
+for index, item in enumerate(items, start=start):
+ print(index, item)
+```
+
+This is correct:
+
+```py
+items = ['apple', 'orange', 'grape']
+start = [1]
+
+for index, item in enumerate(items, start=len(start)):
+ print(index, item)
+```
+
+This is also correct:
+
+```py
+items = ['apple', 'orange', 'grape']
+start = 1
+
+for index, item in enumerate(items, start=start):
+ print(index, item)
+```
+
+I hope this article helped you fix the error. Thank you for reading!

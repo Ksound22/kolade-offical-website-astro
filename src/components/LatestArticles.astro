@@ -1,13 +1,18 @@
 ---
-import ArticleCard from "./ArticleCard.astro"
+import ArticleCard from "./ArticleCard.astro";
 
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 const allArticles: CollectionEntry<'articles'>[] = (await getCollection('articles'))
-.sort((a:CollectionEntry<'articles'>, b:CollectionEntry<'articles'>) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
+  .filter((article) => article.data.publishedDate) // Filter out articles with no publishedDate
+  .sort((a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) => {
+    const dateA = new Date(a.data.publishedDate).valueOf();
+    const dateB = new Date(b.data.publishedDate).valueOf();
+    return dateB - dateA;
+  });
 
-const latestArticles: CollectionEntry<'articles'>[] = allArticles.slice(0, 3)
+const latestArticles: CollectionEntry<'articles'>[] = allArticles.slice(0, 3);
 ---
 
 <div class="article-cards">
