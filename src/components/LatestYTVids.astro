@@ -6,31 +6,39 @@ const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=s
 const { items } = await res.json();
 ---
 
-<div>
-  <div class="videos">
+<section class="youtube-section">
+  <div class="video-container">
     {items?.map((video: any) => (
-      <div class="video-item">
-        <h3 class="vid-title">{video.snippet.title.substring(0, 33)}...</h3>
-        <Image
-          src={video.snippet.thumbnails.medium.url}
-          width={390}
-          height={250}
-          alt={video.snippet.title}
-        />
-        <a 
-          href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-          target='_blank'
-          rel='noopener noreferrer'
-          role='button'
-          class="watch-btn"
-        >
-          Watch
-        </a>
+      <div class="video-card">
+        <div class="thumbnail-wrapper">
+          <Image
+            src={video.snippet.thumbnails.medium.url}
+            width={390}
+            height={250}
+            alt={video.snippet.title}
+            class="video-thumbnail"
+          />
+        </div>
+        <div class="video-content">
+          <h3 class="video-title">{video.snippet.title.length > 60 
+            ? `${video.snippet.title.substring(0, 60)}...` 
+            : video.snippet.title}
+          </h3>
+          <a
+            href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="watch-button"
+            aria-label={`Watch ${video.snippet.title}`}
+          >
+            Watch Video
+          </a>
+        </div>
       </div>
     ))}
   </div>
-  
-</div>
+</section>
+
 
 <style>
  .videos {
